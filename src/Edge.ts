@@ -1,37 +1,29 @@
 import { EdgeDefinition } from 'cytoscape';
 
-import { Id } from './Id';
-import { inspect } from './inspect';
+import { NodeId } from './NodeId';
 
-type EdgeParams = {
-  comment?: string;
-  source: Id;
-  target: Id;
-
-  [key: string]: unknown;
-};
+export interface EdgeData {
+  label?: string;
+  source: NodeId;
+  target: NodeId;
+}
 
 export class Edge {
-  public static fromRetool(): Node {
-    throw new Error();
-  }
-
-  private static getContent(params: EdgeParams): string {
-    let content: string = '';
-    content += inspect(params, ['source', 'target']);
-    return content;
-  }
-
-  public constructor(private params: EdgeParams) {}
+  public constructor(private data: EdgeData) {}
 
   public build(): EdgeDefinition {
     return {
       data: {
-        ...this.params,
-        content: Edge.getContent(this.params),
-        source: `${this.params.source}`,
-        target: `${this.params.target}`,
+        ...this.data,
+        content: this.getContent(),
+        source: this.data.source.toString(),
+        target: this.data.target.toString(),
       },
     };
+  }
+
+  private getContent(): string {
+    const { data } = this;
+    return data.label ?? '';
   }
 }

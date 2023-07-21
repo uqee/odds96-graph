@@ -1,4 +1,5 @@
 export enum NodeType {
-  PERSON = 'PERSON',
+  CLIENT = 'CLIENT',
+  DEVICE = 'DEVICE',
   WALLET = 'WALLET',
 }

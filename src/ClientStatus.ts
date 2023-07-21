@@ -1,4 +1,4 @@
-export enum NodeStatus {
+export enum ClientStatus {
   ACTIVE = 'ACTIVE',
   BLOCKED = 'BLOCKED',
   LIGHT_BLOCKED = 'LIGHT_BLOCKED',
