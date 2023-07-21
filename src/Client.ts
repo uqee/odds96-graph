@@ -1,30 +1,24 @@
 import { ClientStatus } from './ClientStatus';
 import { inspect } from './inspect';
 import { Node, NodeData } from './Node';
-import { NodeType } from './NodeType';
 
 export interface ClientData extends NodeData {
   bal?: number;
   dps?: number;
   name?: string;
   pnl?: number;
-  root?: boolean;
   status?: ClientStatus;
-  type: NodeType.CLIENT;
   wds?: number;
 }
 
 export class Client extends Node {
   protected static KEYS: (keyof ClientData)[] = [
+    ...super.KEYS,
     'bal',
-    'comment',
     'dps',
-    'id',
     'name',
     'pnl',
-    'root',
     'status',
-    'type',
     'wds',
   ];
 
@@ -38,7 +32,7 @@ export class Client extends Node {
 
     // header
 
-    content += `${Client.PAD(`🙂${data.id}`)} | ${
+    content += `${Client.PAD(`🙂${data.ID}`)} | ${
       data.status ?? ClientStatus.ACTIVE
     }`;
     content += `\n${Client.LINE}`;

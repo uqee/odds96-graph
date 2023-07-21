@@ -1,10 +1,7 @@
 import { inspect } from './inspect';
 import { Node, NodeData } from './Node';
-import { NodeType } from './NodeType';
 
-export interface DeviceData extends NodeData {
-  type: NodeType.DEVICE;
-}
+export interface DeviceData extends NodeData {}
 
 export class Device extends Node {
   public constructor(protected data: DeviceData) {
@@ -16,7 +13,7 @@ export class Device extends Node {
     let content: string = '';
 
     // header
-    content += `${Device.PAD(`👛${data.id}`)}`;
+    content += `${Device.PAD(`👛${data.ID}`)}`;
 
     // footer
     const footer: string = inspect(data, Device.KEYS);

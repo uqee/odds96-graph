@@ -1,10 +1,7 @@
 import { inspect } from './inspect';
 import { Node, NodeData } from './Node';
-import { NodeType } from './NodeType';
 
-export interface WalletData extends NodeData {
-  type: NodeType.WALLET;
-}
+export interface WalletData extends NodeData {}
 
 export class Wallet extends Node {
   public constructor(protected data: WalletData) {
@@ -16,7 +13,7 @@ export class Wallet extends Node {
     let content: string = '';
 
     // header
-    content += `${Wallet.PAD(`👛${data.id}`)}`;
+    content += `${Wallet.PAD(`👛${data.ID}`)}`;
 
     // footer
     const footer: string = inspect(data, Wallet.KEYS);

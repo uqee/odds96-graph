@@ -1,14 +1,41 @@
-import cytoscape from 'cytoscape';
+import cytoscape, { CytoscapeOptions } from 'cytoscape';
 import cytoscapeCoseBilkent from 'cytoscape-cose-bilkent';
 import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
 import materialColors from 'material-colors';
 
-import { elements } from './EDITME';
+import { GRAPH } from './GRAPH';
 import './index.css';
+import { Edge, getNode } from './src';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
+
+//
+
+export const elements: CytoscapeOptions['elements'] = {
+  nodes: [],
+  edges: [],
+};
+
+for (let i = 0; i < GRAPH.length; i++) {
+  const item = GRAPH[i];
+
+  item.ROOT = i === 0 ? true : false;
+  elements.nodes.push(getNode(item).build());
+
+  for (const link of item.LINKS ?? []) {
+    elements.edges.push(
+      new Edge(
+        Array.isArray(link)
+          ? { source: item.ID, target: link[0], label: link[1] }
+          : { source: item.ID, target: link }
+      ).build()
+    );
+  }
+}
+
+//
 
 cytoscape({
   container: document.getElementById('index'),
@@ -48,7 +75,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status = "ACTIVE"]',
+      selector: 'node[status=ACTIVE]',
       style: {
         'background-color': materialColors.blue['100'],
         'border-color': materialColors.blue['700'],
@@ -56,14 +83,14 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status = "ACTIVE"][root]',
+      selector: 'node[status=ACTIVE][ROOT]',
       style: {
         'background-color': materialColors.blue['500'],
         color: materialColors.white,
       },
     },
     {
-      selector: 'node[status = "BLOCKED"]',
+      selector: 'node[status=BLOCKED]',
       style: {
         'background-color': materialColors.red['100'],
         'border-color': materialColors.red['700'],
@@ -71,7 +98,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status = "BLOCKED"][root]',
+      selector: 'node[status=BLOCKED][ROOT]',
       style: {
         'background-color': materialColors.red['500'],
         color: materialColors.white,
