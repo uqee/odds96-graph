@@ -23,10 +23,13 @@ cytoscape({
         label: 'data(label)',
         content: 'data(content)',
         'font-family': 'PT Mono, monospace',
+        height: 'label',
         // @ts-ignore
         padding: '0.5em',
+        'text-justification': 'left',
         'text-valign': 'center',
         'text-wrap': 'wrap',
+        width: 'label',
       },
     },
     {
@@ -40,23 +43,38 @@ cytoscape({
     {
       selector: 'node',
       style: {
-        'background-color': materialColors.blue['100'],
-        'border-color': materialColors.blue['700'],
         'border-width': '1px',
-        color: materialColors.blue['700'],
         shape: 'round-rectangle',
-        width: 'label',
       },
     },
     {
-      selector: 'node#1',
+      selector: 'node[status = "ACTIVE"]',
+      style: {
+        'background-color': materialColors.blue['100'],
+        'border-color': materialColors.blue['700'],
+        color: materialColors.blue['700'],
+      },
+    },
+    {
+      selector: 'node[status = "ACTIVE"][root]',
       style: {
         'background-color': materialColors.blue['500'],
-        'border-color': materialColors.blue['700'],
-        'border-width': '1px',
         color: materialColors.white,
-        shape: 'round-rectangle',
-        width: 'label',
+      },
+    },
+    {
+      selector: 'node[status = "BLOCKED"]',
+      style: {
+        'background-color': materialColors.red['100'],
+        'border-color': materialColors.red['700'],
+        color: materialColors.red['700'],
+      },
+    },
+    {
+      selector: 'node[status = "BLOCKED"][root]',
+      style: {
+        'background-color': materialColors.red['500'],
+        color: materialColors.white,
       },
     },
   ],
