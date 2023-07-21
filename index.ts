@@ -6,7 +6,7 @@ import materialColors from 'material-colors';
 
 import { GRAPH } from './GRAPH';
 import './index.css';
-import { Edge, getNode } from './src';
+import { Client, Edge, getNode } from './src';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
@@ -75,7 +75,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status=ACTIVE]',
+      selector: 'node[status="ACTIVE"]',
       style: {
         'background-color': materialColors.blue['100'],
         'border-color': materialColors.blue['700'],
@@ -83,14 +83,14 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status=ACTIVE][ROOT]',
+      selector: 'node[status="ACTIVE"][ROOT]',
       style: {
         'background-color': materialColors.blue['500'],
         color: materialColors.white,
       },
     },
     {
-      selector: 'node[status=BLOCKED]',
+      selector: 'node[status="BLOCKED"]',
       style: {
         'background-color': materialColors.red['100'],
         'border-color': materialColors.red['700'],
@@ -98,7 +98,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status=BLOCKED][ROOT]',
+      selector: 'node[status="BLOCKED"][ROOT]',
       style: {
         'background-color': materialColors.red['500'],
         color: materialColors.white,

@@ -5,7 +5,7 @@ import { NodeType } from './NodeType';
 import { Wallet, WalletData } from './Wallet';
 
 export const getNode = (nodeData: NodeData): Node => {
-  switch (nodeData.type) {
+  switch (nodeData.TYPE) {
     case NodeType.CLIENT:
       return new Client(nodeData as ClientData);
     case NodeType.DEVICE:
