@@ -1,0 +1,16 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+#index {
+  height: 100%;
+  width: 100%;
+}
+
+.cytoscape-navigator {
+  height: 10em;
+  width: 10em;
+}
