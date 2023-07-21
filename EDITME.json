@@ -2,8 +2,8 @@
   "nodes": [
     {
       "data": {
-        "id": 1,
-        "content": "A B dkfjnvdkfjv \n kdj fvkdjf vkdfj dkfj vkd jfv kdj fvkdj fvkdjf "
+        "id": 267376,
+        "content": "+ **267376** active + balance/pnl **110/45** + dps/wds **370/325** + name **Gulam Abdul Kadir** + proof **5850** ❌"
       }
     },
     {
@@ -16,8 +16,8 @@
   "edges": [
     {
       "data": {
-        "label": "a: hello\nb:hello",
-        "source": 1,
+        "content": "a: hello\nb:hello",
+        "source": 267376,
         "target": 2
       }
     }

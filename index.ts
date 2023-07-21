@@ -2,6 +2,7 @@ import cytoscape, { CytoscapeOptions } from 'cytoscape';
 import cytoscapeCoseBilkent from 'cytoscape-cose-bilkent';
 import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
+import materialColors from 'material-colors';
 
 // @ts-ignore
 import elements from './EDITME.json';
@@ -9,8 +10,6 @@ import './index.css';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
-
-// const COLORS = {};
 
 cytoscape({
   container: document.getElementById('index'),
@@ -33,15 +32,19 @@ cytoscape({
     },
     {
       selector: 'edge',
-      style: {},
+      style: {
+        color: materialColors.blue['700'],
+        'line-color': materialColors.blue['700'],
+        width: '1px',
+      },
     },
     {
       selector: 'node',
       style: {
-        'background-color': '#CAE2FF',
-        'border-color': '#007BFF',
+        'background-color': materialColors.blue['100'],
+        'border-color': materialColors.blue['700'],
         'border-width': '1px',
-        color: '#007BFF',
+        color: materialColors.blue['700'],
         shape: 'round-rectangle',
         width: 'label',
       },
@@ -49,10 +52,10 @@ cytoscape({
     {
       selector: 'node#1',
       style: {
-        'background-color': '#007BFF',
-        'border-color': '#007BFF',
+        'background-color': materialColors.blue['500'],
+        'border-color': materialColors.blue['700'],
         'border-width': '1px',
-        color: 'white',
+        color: materialColors.white,
         shape: 'round-rectangle',
         width: 'label',
       },
