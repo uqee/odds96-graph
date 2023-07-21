@@ -1,11 +1,11 @@
 import cytoscape, { CytoscapeOptions } from 'cytoscape';
 import cytoscapeCoseBilkent from 'cytoscape-cose-bilkent';
 import cytoscapeNavigator from 'cytoscape-navigator';
-
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
-import './index.css';
 
-import { elements } from './EDITME.json';
+// @ts-ignore
+import elements from './EDITME.json';
+import './index.css';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
@@ -25,6 +25,7 @@ cytoscape({
         label: 'data(label)',
         content: 'data(content)',
         'font-family': 'PT Mono, monospace',
+        // @ts-ignore
         padding: '0.5em',
         'text-valign': 'center',
         'text-wrap': 'wrap',
