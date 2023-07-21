@@ -5,7 +5,7 @@ import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
 import './index.css';
 
-import elements from './EDITME.json';
+import { elements } from './EDITME';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
