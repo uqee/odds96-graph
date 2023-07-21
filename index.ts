@@ -1,11 +1,11 @@
-import cytoscape from 'cytoscape';
+import cytoscape, { CytoscapeOptions } from 'cytoscape';
 import cytoscapeCoseBilkent from 'cytoscape-cose-bilkent';
 import cytoscapeNavigator from 'cytoscape-navigator';
 
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
 import './index.css';
 
-import { elements } from './EDITME';
+import { elements } from './EDITME.json';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
@@ -14,7 +14,7 @@ cytoscapeNavigator(cytoscape);
 
 cytoscape({
   container: document.getElementById('index'),
-  elements,
+  elements: elements as CytoscapeOptions['elements'],
   layout: {
     name: 'cose-bilkent',
   },
