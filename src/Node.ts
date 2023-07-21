@@ -30,25 +30,27 @@ export class Node {
 
     // header
 
-    content += `${params.id}`;
-    if (params.status !== undefined) content += `  | ${params.status}`;
-    content += '\n------------------';
+    content += `${params.id}`.padEnd(7, ' ');
+    if (params.status !== undefined) content += ` | ${params.status}`;
+    content += '\n' + '-'.repeat(18);
 
     // body
+    // known params
 
     if (params.name !== undefined) {
-      content += `\nname    | ${params.name}`;
+      content += `\n${'name'.padEnd(7, ' ')} | ${params.name}`;
     }
 
     if (params.pnl !== undefined || params.balance !== undefined) {
-      content += `\npnl/bal | ${params.pnl}/${params.bal}`;
+      content += `\n${'pnl/bal'.padEnd(7, ' ')} | ${params.pnl}/${params.bal}`;
     }
 
     if (params.dps !== undefined || params.wds !== undefined) {
-      content += `\ndps/wds | ${params.dps}/${params.wds}`;
+      content += `\n${'dps/wds'.padEnd(7, ' ')} | ${params.dps}/${params.wds}`;
     }
 
     // footer
+    // unknown params
 
     const footer: string = inspect(params, [
       'bal',
@@ -63,7 +65,7 @@ export class Node {
     ]);
 
     if (footer !== '') {
-      content += '\n------------------';
+      content += '\n' + '-'.repeat(18);
       content += footer;
     }
 
