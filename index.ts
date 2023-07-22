@@ -9,14 +9,14 @@ import materialColors from 'material-colors';
 
 import { GRAPH } from './GRAPH';
 import './index.css';
-import { Client, Edge, getNode } from './src';
+import { Edge, getNode } from './src';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
 
 //
 
-export const elements: CytoscapeOptions['elements'] = {
+const elements: CytoscapeOptions['elements'] = {
   nodes: [],
   edges: [],
 };
@@ -38,6 +38,8 @@ for (let i = 0; i < GRAPH.length; i++) {
   }
 }
 
+console.log(elements);
+
 //
 
 cytoscape({
@@ -50,22 +52,15 @@ cytoscape({
     {
       selector: '*',
       style: {
-        label: 'data(label)',
         content: 'data(content)',
         'font-family': 'PT Mono, monospace',
-        height: 'label',
-        // @ts-ignore
-        padding: '0.5em',
-        'text-justification': 'left',
-        'text-valign': 'center',
-        'text-wrap': 'wrap',
-        width: 'label',
       },
     },
     {
       selector: 'edge',
       style: {
         color: materialColors.blue['700'],
+        'curve-style': 'straight',
         'line-color': materialColors.blue['700'],
         // 'text-rotation': 'autorotate',
         width: '1px',
@@ -75,7 +70,14 @@ cytoscape({
       selector: 'node',
       style: {
         'border-width': '1px',
+        height: 'label',
+        // @ts-ignore
+        padding: '0.5em',
         shape: 'round-rectangle',
+        'text-justification': 'left',
+        'text-valign': 'center',
+        'text-wrap': 'wrap',
+        width: 'label',
       },
     },
     {
