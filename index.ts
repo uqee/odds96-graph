@@ -62,10 +62,8 @@ cytoscape({
     {
       selector: 'edge',
       style: {
-        color: materialColors.blue['700'],
         'curve-style': 'straight',
-        'line-color': materialColors.blue['700'],
-        // 'text-rotation': 'autorotate',
+        'text-rotation': 'autorotate',
         width: '1px',
       },
     },
@@ -84,7 +82,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status="ACTIVE"]',
+      selector: 'node[TYPE="CLIENT"][status="ACTIVE"]',
       style: {
         'background-color': materialColors.blue['100'],
         'border-color': materialColors.blue['700'],
@@ -92,14 +90,14 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status="ACTIVE"][ROOT]',
+      selector: 'node[TYPE="CLIENT"][status="ACTIVE"][ROOT]',
       style: {
         'background-color': materialColors.blue['500'],
         color: materialColors.white,
       },
     },
     {
-      selector: 'node[status="BLOCKED"]',
+      selector: 'node[TYPE="CLIENT"][status="BLOCKED"]',
       style: {
         'background-color': materialColors.red['100'],
         'border-color': materialColors.red['700'],
@@ -107,10 +105,18 @@ cytoscape({
       },
     },
     {
-      selector: 'node[status="BLOCKED"][ROOT]',
+      selector: 'node[TYPE="CLIENT"][status="BLOCKED"][ROOT]',
       style: {
         'background-color': materialColors.red['500'],
         color: materialColors.white,
+      },
+    },
+    {
+      selector: 'node[TYPE="DEVICE"], node[TYPE="WALLET"]',
+      style: {
+        'background-color': materialColors.cyan['100'],
+        'border-color': materialColors.cyan['700'],
+        color: materialColors.cyan['700'],
       },
     },
   ],

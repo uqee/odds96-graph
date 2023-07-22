@@ -19,9 +19,9 @@ export interface NodeData {
 
 export class Node {
   protected static KEYS: (keyof NodeData)[] = ['ID', 'LINKS', 'ROOT', 'TYPE'];
-  protected static LINE: string = '-'.repeat(21);
+  protected static LINE: string = '-'.repeat(20);
   protected static PAD = (key: number | string): string =>
-    key.toString().padEnd(9, ' ');
+    key.toString().padEnd(8, ' ');
 
   public constructor(protected data: NodeData) {}
 

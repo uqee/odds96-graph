@@ -13,7 +13,7 @@ export class Device extends Node {
     let content: string = '';
 
     // header
-    content += `${Device.PAD(`👛${data.ID}`)}`;
+    content += `${Device.PAD(`📱${data.ID}`)}`;
 
     // footer
     const footer: string = inspect(data, Device.KEYS);

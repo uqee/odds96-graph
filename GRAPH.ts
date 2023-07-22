@@ -71,6 +71,6 @@ export const GRAPH: NodeData[] = [
   },
   {
     ID: 7325,
-    TYPE: NodeType.WALLET,
+    TYPE: NodeType.DEVICE,
   },
 ];
