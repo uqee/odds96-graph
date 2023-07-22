@@ -41,8 +41,6 @@ for (let i = 0; i < GRAPH.length; i++) {
   }
 }
 
-console.log(elements);
-
 //
 
 cytoscape({
@@ -62,6 +60,7 @@ cytoscape({
     {
       selector: 'edge',
       style: {
+        color: materialColors.grey['700'],
         'curve-style': 'straight',
         'text-rotation': 'autorotate',
         width: '1px',
