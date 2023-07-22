@@ -1,3 +1,6 @@
+// documentation
+// https://js.cytoscape.org/#style
+
 // another awesome tool
 // https://www.yworks.com/yed-live/
 
