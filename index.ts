@@ -21,7 +21,7 @@ export const elements: CytoscapeOptions['elements'] = {
 for (let i = 0; i < GRAPH.length; i++) {
   const item = GRAPH[i];
 
-  item.ROOT = i === 0 ? true : false;
+  item.ROOT = i === 0 ? true : undefined;
   elements.nodes.push(getNode(item).build());
 
   for (const link of item.LINKS ?? []) {
@@ -64,6 +64,7 @@ cytoscape({
       style: {
         color: materialColors.blue['700'],
         'line-color': materialColors.blue['700'],
+        // 'text-rotation': 'autorotate',
         width: '1px',
       },
     },
