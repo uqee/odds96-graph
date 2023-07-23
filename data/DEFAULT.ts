@@ -1,6 +1,6 @@
-import { ClientStatus, Emoji, NodeData, NodeType } from './src';
+import { ClientStatus, Emoji, NodeData, NodeType } from '../src';
 
-export const GRAPH: NodeData[] = [
+export const data: NodeData[] = [
   {
     ID: 267376,
     LINKS: [[5850, Emoji.CROSS], 7325],

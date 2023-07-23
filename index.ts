@@ -10,7 +10,7 @@ import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
 import materialColors from 'material-colors';
 
-import { GRAPH } from './GRAPH';
+import { data } from './data';
 import './index.css';
 import { Edge, getNode } from './src';
 
@@ -24,8 +24,8 @@ const elements: CytoscapeOptions['elements'] = {
   edges: [],
 };
 
-for (let i = 0; i < GRAPH.length; i++) {
-  const item = GRAPH[i];
+for (let i = 0; i < data.length; i++) {
+  const item = data[i];
 
   item.ROOT = i === 0 ? true : undefined;
   elements.nodes.push(getNode(item).build());
