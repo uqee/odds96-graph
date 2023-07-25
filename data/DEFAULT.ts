@@ -73,6 +73,6 @@ export const clientInputs: ClientInput[] = [
       NGR Total USD	$78.75
     `,
     root: true,
-    text: 'oh shit',
+    text: ``,
   },
 ];

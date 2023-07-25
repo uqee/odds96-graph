@@ -102,9 +102,17 @@ export class Client extends Entity {
 
     // footer
 
-    if (this.input.text !== undefined) {
-      content += `\n${Client.content_LINE}`;
-      content += `\n${this.input.text}`;
+    {
+      let footer: string = '';
+
+      if (isDefined(this.input.text)) {
+        footer += this.input.text;
+      }
+
+      if (isDefined(footer)) {
+        content += `\n${Client.content_LINE}`;
+        content += footer;
+      }
     }
 
     //
