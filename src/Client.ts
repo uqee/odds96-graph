@@ -39,6 +39,7 @@ export class Client extends Entity {
       data: {
         content: this.content,
         id: this.id,
+        root: this.input.root,
         status: this.status,
         type: EntityType.CLIENT,
       },
