@@ -1,27 +1,44 @@
-import { inspect } from './inspect';
-import { Node, NodeData } from './Node';
+import { NodeDefinition } from 'cytoscape';
 
-export interface WalletData extends NodeData {}
+import { Entity, EntityInput } from './Entity';
+import { EntityId } from './EntityId';
+import { EntityType } from './EntityType';
 
-export class Wallet extends Node {
-  public constructor(protected data: WalletData) {
-    super(data);
+export interface WalletInput extends EntityInput {
+  id: Entity['id'];
+}
+
+export class Wallet extends Entity {
+  public constructor(protected input: WalletInput) {
+    super();
   }
 
-  protected getContent(): string {
-    const { data } = this;
+  public build(): NodeDefinition {
+    return {
+      data: {
+        content: this.content,
+        id: this.id,
+        type: EntityType.WALLET,
+      },
+    };
+  }
+
+  protected get content(): string {
     let content: string = '';
 
     // header
-    content += `${Wallet.PAD(`👛${data.ID}`)}`;
+    content += `${Wallet.content_PAD(`👛${this.id}`)}`;
 
     // footer
-    const footer: string = inspect(data, Wallet.KEYS);
-    if (footer !== '') {
-      content += `\n${Wallet.LINE}`;
-      content += footer;
+    if (this.input.text !== undefined) {
+      content += `\n${Wallet.content_LINE}`;
+      content += this.input.text;
     }
 
     return content;
+  }
+
+  public get id(): EntityId {
+    return this.input.id;
   }
 }

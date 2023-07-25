@@ -1,4 +1,4 @@
-export const inspect = <TParams, TKey extends keyof TParams>(
+export const inspect = <TParams extends object, TKey extends keyof TParams>(
   params: TParams,
   excludedkeys: TKey[]
 ): string => {
@@ -15,7 +15,7 @@ export const inspect = <TParams, TKey extends keyof TParams>(
   for (const key of keys) {
     const value: unknown = params[key];
     if (value !== undefined)
-      result += `\n${key.toString().padEnd(maxlength, ' ')} ${value}`;
+      result += `\n${key.toString().padEnd(maxlength, ' ')} | ${value}`;
   }
 
   return result;

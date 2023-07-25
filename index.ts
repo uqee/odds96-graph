@@ -10,9 +10,17 @@ import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
 import materialColors from 'material-colors';
 
-import { data } from './data';
+import { clientInputs } from './data';
 import './index.css';
-import { Edge, getNode } from './src';
+import {
+  Client,
+  Device,
+  Link,
+  Entity,
+  EntityId,
+  EntityType,
+  Wallet,
+} from './src';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
@@ -24,21 +32,62 @@ const elements: CytoscapeOptions['elements'] = {
   edges: [],
 };
 
-for (let i = 0; i < data.length; i++) {
-  const item = data[i];
+const entities: Map<EntityId, Entity> = new Map();
+for (let i = 0; i < clientInputs.length; i++) {
+  const clientInput = clientInputs[i];
 
-  item.ROOT = i === 0 ? true : undefined;
-  elements.nodes.push(getNode(item).build());
+  const client: Client = new Client(clientInput);
+  entities.set(client.id, client);
 
-  for (const link of item.LINKS ?? []) {
-    elements.edges.push(
-      new Edge(
-        Array.isArray(link)
-          ? { source: item.ID, target: link[0], label: link[1] }
-          : { source: item.ID, target: link }
-      ).build()
-    );
+  for (const linkDevice of client.linkDevices) {
+    //
+
+    if (!entities.has(linkDevice.clientId)) {
+      entities.set(
+        linkDevice.clientId,
+        new Client({ id: linkDevice.clientId })
+      );
+    }
+
+    if (!entities.has(linkDevice.deviceId)) {
+      entities.set(
+        linkDevice.deviceId,
+        new Device({ id: linkDevice.deviceId })
+      );
+    }
   }
+
+  for (const linkWallet of client.linkWallets) {
+    //
+
+    if (!entities.has(linkWallet.clientId)) {
+      entities.set(
+        linkWallet.clientId,
+        new Client({ id: linkWallet.clientId })
+      );
+    }
+
+    if (!entities.has(linkWallet.walletId)) {
+      entities.set(
+        linkWallet.walletId,
+        new Wallet({ id: linkWallet.walletId })
+      );
+    }
+  }
+
+  for (const entity of entities.values()) {
+    elements.nodes.push(entity.build());
+  }
+
+  // for (const link of item.LINKS ?? []) {
+  //   elements.edges.push(
+  //     new Edge(
+  //       Array.isArray(link)
+  //         ? { source: item.ID, target: link[0], label: link[1] }
+  //         : { source: item.ID, target: link }
+  //     ).build()
+  //   );
+  // }
 }
 
 //
@@ -81,7 +130,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[TYPE="CLIENT"][status="ACTIVE"]',
+      selector: 'node[type="CLIENT"][status="Active"]',
       style: {
         'background-color': materialColors.blue['100'],
         'border-color': materialColors.blue['700'],
@@ -89,14 +138,14 @@ cytoscape({
       },
     },
     {
-      selector: 'node[TYPE="CLIENT"][status="ACTIVE"][ROOT]',
+      selector: 'node[type="CLIENT"][status="Active"][root]',
       style: {
         'background-color': materialColors.blue['500'],
         color: materialColors.white,
       },
     },
     {
-      selector: 'node[TYPE="CLIENT"][status="BLOCKED"]',
+      selector: 'node[type="CLIENT"][status="Blocked"]',
       style: {
         'background-color': materialColors.red['100'],
         'border-color': materialColors.red['700'],
@@ -104,14 +153,14 @@ cytoscape({
       },
     },
     {
-      selector: 'node[TYPE="CLIENT"][status="BLOCKED"][ROOT]',
+      selector: 'node[type="CLIENT"][status="Blocked"][root]',
       style: {
         'background-color': materialColors.red['500'],
         color: materialColors.white,
       },
     },
     {
-      selector: 'node[TYPE="DEVICE"], node[TYPE="WALLET"]',
+      selector: 'node[type="DEVICE"], node[type="WALLET"]',
       style: {
         'background-color': materialColors.cyan['100'],
         'border-color': materialColors.cyan['700'],

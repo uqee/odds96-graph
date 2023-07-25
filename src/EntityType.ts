@@ -1,6 +1,6 @@
-export enum NodeType {
+export enum EntityType {
   CLIENT = 'CLIENT',
   DEVICE = 'DEVICE',
-  OTHER = 'OTHER',
+  LINK = 'LINK',
   WALLET = 'WALLET',
 }
