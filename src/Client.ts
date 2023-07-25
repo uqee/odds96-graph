@@ -1,7 +1,6 @@
 import { NodeDefinition } from 'cytoscape';
 
 import { assertDefined } from './assertDefined';
-import { Emoji } from './Emoji';
 import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
@@ -72,10 +71,13 @@ export class Client extends Entity {
 
       if (isDefined(deposits) || isDefined(ngr) || isDefined(withdrawals)) {
         body += `\n${Client.content_PAD('$')}`;
-        body += ` | ${(deposits ?? 0) - (withdrawals ?? 0) - (ngr ?? 0)}`;
-        body += ` (↑${deposits} ↓${withdrawals} ${
-          (ngr ?? 0) > 0 ? Emoji.CHECKMARK : Emoji.CROSS
-        }${ngr})`;
+        body += ` | ${Math.round(
+          (deposits ?? 0) - (withdrawals ?? 0) - (ngr ?? 0)
+        )}`;
+        body += ` (↑${Math.round(deposits ?? 0)}`;
+        body += ` ↓${Math.round(withdrawals ?? 0)}`;
+        body += ` ${Math.round(ngr ?? 0) > 0 ? '-' : '+'}`;
+        body += `${Math.round(ngr ?? 0)})`;
       }
 
       if (isDefined(email)) {
