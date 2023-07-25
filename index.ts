@@ -4,7 +4,7 @@
 // another awesome tool
 // https://www.yworks.com/yed-live/
 
-import cytoscape, { CytoscapeOptions } from 'cytoscape';
+import cytoscape from 'cytoscape';
 import cytoscapeCoseBilkent from 'cytoscape-cose-bilkent';
 import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
@@ -12,68 +12,14 @@ import materialColors from 'material-colors';
 
 import { clientInputs } from './data';
 import './index.css';
-import {
-  Client,
-  Device,
-  Link,
-  Entity,
-  EntityId,
-  EntityType,
-  Wallet,
-} from './src';
+import { toElements } from './src';
 
 cytoscape.use(cytoscapeCoseBilkent);
 cytoscapeNavigator(cytoscape);
 
-//
-
-const elements: CytoscapeOptions['elements'] = {
-  nodes: [],
-  edges: [],
-};
-
-const edges: Map<EntityId, Link> = new Map();
-const nodes: Map<EntityId, Entity> = new Map();
-
-for (let i = 0; i < clientInputs.length; i++) {
-  const clientInput = clientInputs[i];
-
-  const client: Client = new Client(clientInput);
-  nodes.set(client.id, client);
-
-  for (const linkDevice of client.linkDevices) {
-    //
-
-    if (!nodes.has(linkDevice.clientId)) {
-      nodes.set(linkDevice.clientId, new Client({ id: linkDevice.clientId }));
-    }
-
-    if (!nodes.has(linkDevice.deviceId)) {
-      nodes.set(linkDevice.deviceId, new Device({ id: linkDevice.deviceId }));
-    }
-  }
-
-  for (const linkWallet of client.linkWallets) {
-    //
-
-    if (!nodes.has(linkWallet.clientId)) {
-      nodes.set(linkWallet.clientId, new Client({ id: linkWallet.clientId }));
-    }
-
-    if (!nodes.has(linkWallet.walletId)) {
-      nodes.set(linkWallet.walletId, new Wallet({ id: linkWallet.walletId }));
-    }
-  }
-}
-
-for (const edge of edges.values()) elements.edges.push(edge.build());
-for (const node of nodes.values()) elements.nodes.push(node.build());
-
-//
-
 cytoscape({
   container: document.getElementById('index'),
-  elements,
+  elements: toElements(clientInputs),
   layout: {
     name: 'cose-bilkent',
   },

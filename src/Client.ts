@@ -5,6 +5,7 @@ import { Emoji } from './Emoji';
 import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
+import { isDefined } from './isDefined';
 import { toDefined } from './toDefined';
 import { toNumber } from './toNumber';
 
@@ -44,35 +45,59 @@ export class Client extends Entity {
     };
   }
 
-  private get deposits(): number | undefined {
-    return toNumber(
-      Client.data_PARSE<string>(
-        /\s*Deposits USD\s*\$([\d\.]+)\n/,
-        this.input.retool_userInfo_statistics
-      )
-    );
-  }
-
   protected get content(): string {
+    const {
+      deposits,
+      email,
+      id,
+      login,
+      name,
+      ngr,
+      phone,
+      status,
+      withdrawals,
+    } = this;
     let content: string = '';
 
     // header
 
-    content += `${Client.content_PAD(`🙂${this.id}`)} | ${this.status}`;
-    content += `\n${Client.content_LINE}`;
+    content += Client.content_PAD(`🙂${id}`);
+    if (isDefined(status)) content += ` | ${status}`;
 
     // body
 
-    const { deposits, ngr, withdrawals } = this;
-    content += `\n${Client.content_PAD('$')}`;
-    content += ` | ${deposits - withdrawals - ngr}`;
-    content += ` (↑${deposits} ↓${withdrawals} ${
-      ngr > 0 ? Emoji.CHECKMARK : Emoji.CROSS
-    }${ngr})`;
+    {
+      let body: string = '';
 
-    const { name } = this;
-    content += `\n${Client.content_PAD('name')}`;
-    content += ` | ${name}`;
+      if (isDefined(deposits) || isDefined(ngr) || isDefined(withdrawals)) {
+        body += `\n${Client.content_PAD('$')}`;
+        body += ` | ${(deposits ?? 0) - (withdrawals ?? 0) - (ngr ?? 0)}`;
+        body += ` (↑${deposits} ↓${withdrawals} ${
+          (ngr ?? 0) > 0 ? Emoji.CHECKMARK : Emoji.CROSS
+        }${ngr})`;
+      }
+
+      if (isDefined(email)) {
+        body += `\n${Client.content_PAD('email')} | ${email}`;
+      }
+
+      if (isDefined(login)) {
+        body += `\n${Client.content_PAD('login')} | ${login}`;
+      }
+
+      if (isDefined(name)) {
+        body += `\n${Client.content_PAD('name')} | ${name}`;
+      }
+
+      if (isDefined(phone)) {
+        body += `\n${Client.content_PAD('phone')} | ${phone}`;
+      }
+
+      if (isDefined(body)) {
+        content += `\n${Client.content_LINE}`;
+        content += body;
+      }
+    }
 
     // footer
 
@@ -84,6 +109,22 @@ export class Client extends Entity {
     //
 
     return content;
+  }
+
+  private get deposits(): number | undefined {
+    return toNumber(
+      Client.data_PARSE<string>(
+        /\s*Deposits USD\s*\$([\d\.]+)\n/,
+        this.input.retool_userInfo_statistics
+      )
+    );
+  }
+
+  private get email(): string | undefined {
+    return Client.data_PARSE<string>(
+      /\s*Contact email\s*(\w+)\n/,
+      this.input.retool_userInfo_mainInfo
+    );
   }
 
   public get id(): EntityId {
@@ -193,18 +234,29 @@ export class Client extends Entity {
     return linkWallets;
   }
 
-  private get name(): string {
-    return (
-      Client.data_PARSE<string>(
-        /\s*Firstname\s*(\w+)/,
-        this.input.retool_userInfo_mainInfo
-      ) +
-      ' ' +
-      Client.data_PARSE<string>(
-        /\s*Lastname\s*(\w+)/,
-        this.input.retool_userInfo_mainInfo
-      )
+  private get login(): string | undefined {
+    return Client.data_PARSE<string>(
+      /\s*Login\s*(\w+)\n/,
+      this.input.retool_userInfo_mainInfo
     );
+  }
+
+  private get name(): string | undefined {
+    const firstname: string | undefined = Client.data_PARSE<string>(
+      /\s*Firstname\s*(\w+)/,
+      this.input.retool_userInfo_mainInfo
+    );
+
+    const lastname: string | undefined = Client.data_PARSE<string>(
+      /\s*Lastname\s*(\w+)/,
+      this.input.retool_userInfo_mainInfo
+    );
+
+    if (isDefined(firstname)) {
+      return isDefined(lastname) ? `${firstname} ${lastname}` : firstname;
+    } else {
+      return isDefined(lastname) ? lastname : undefined;
+    }
   }
 
   private get ngr(): number | undefined {
@@ -213,6 +265,13 @@ export class Client extends Entity {
         /\s*NGR Total USD\s*\$([\d\.]+)\n/,
         this.input.retool_userInfo_statistics
       )
+    );
+  }
+
+  private get phone(): string | undefined {
+    return Client.data_PARSE<string>(
+      /\s*Contact phone\s*(\w+)\n/,
+      this.input.retool_userInfo_mainInfo
     );
   }
 
