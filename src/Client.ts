@@ -38,7 +38,7 @@ export class Client extends Entity {
       data: {
         content: this.content,
         id: this.id,
-        root: this.input.root,
+        root: this.input.root === true ? true : undefined,
         status: this.status,
         type: EntityType.CLIENT,
       },
@@ -179,6 +179,9 @@ export class Client extends Entity {
           linkDevice.deviceId = line;
           break;
         case 2:
+          assertDefined(linkDevice);
+          break;
+        case 3:
           assertDefined(linkDevice);
           linkDevice.tags = (JSON.parse(line) as string[]).map((tag) =>
             tag.replace('block_suspend_reasons:', '')
