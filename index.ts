@@ -32,63 +32,42 @@ const elements: CytoscapeOptions['elements'] = {
   edges: [],
 };
 
-const entities: Map<EntityId, Entity> = new Map();
+const edges: Map<EntityId, Link> = new Map();
+const nodes: Map<EntityId, Entity> = new Map();
+
 for (let i = 0; i < clientInputs.length; i++) {
   const clientInput = clientInputs[i];
 
   const client: Client = new Client(clientInput);
-  entities.set(client.id, client);
+  nodes.set(client.id, client);
 
   for (const linkDevice of client.linkDevices) {
     //
 
-    if (!entities.has(linkDevice.clientId)) {
-      entities.set(
-        linkDevice.clientId,
-        new Client({ id: linkDevice.clientId })
-      );
+    if (!nodes.has(linkDevice.clientId)) {
+      nodes.set(linkDevice.clientId, new Client({ id: linkDevice.clientId }));
     }
 
-    if (!entities.has(linkDevice.deviceId)) {
-      entities.set(
-        linkDevice.deviceId,
-        new Device({ id: linkDevice.deviceId })
-      );
+    if (!nodes.has(linkDevice.deviceId)) {
+      nodes.set(linkDevice.deviceId, new Device({ id: linkDevice.deviceId }));
     }
   }
 
   for (const linkWallet of client.linkWallets) {
     //
 
-    if (!entities.has(linkWallet.clientId)) {
-      entities.set(
-        linkWallet.clientId,
-        new Client({ id: linkWallet.clientId })
-      );
+    if (!nodes.has(linkWallet.clientId)) {
+      nodes.set(linkWallet.clientId, new Client({ id: linkWallet.clientId }));
     }
 
-    if (!entities.has(linkWallet.walletId)) {
-      entities.set(
-        linkWallet.walletId,
-        new Wallet({ id: linkWallet.walletId })
-      );
+    if (!nodes.has(linkWallet.walletId)) {
+      nodes.set(linkWallet.walletId, new Wallet({ id: linkWallet.walletId }));
     }
   }
-
-  for (const entity of entities.values()) {
-    elements.nodes.push(entity.build());
-  }
-
-  // for (const link of item.LINKS ?? []) {
-  //   elements.edges.push(
-  //     new Edge(
-  //       Array.isArray(link)
-  //         ? { source: item.ID, target: link[0], label: link[1] }
-  //         : { source: item.ID, target: link }
-  //     ).build()
-  //   );
-  // }
 }
+
+for (const edge of edges.values()) elements.edges.push(edge.build());
+for (const node of nodes.values()) elements.nodes.push(node.build());
 
 //
 
