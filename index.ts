@@ -85,6 +85,21 @@ cytoscape({
       },
     },
     {
+      selector: 'node[type="CLIENT"][status="Suspended"]',
+      style: {
+        'background-color': materialColors.orange['100'],
+        'border-color': materialColors.orange['700'],
+        color: materialColors.orange['700'],
+      },
+    },
+    {
+      selector: 'node[type="CLIENT"][status="Suspended"][root]',
+      style: {
+        'background-color': materialColors.orange['500'],
+        color: materialColors.white,
+      },
+    },
+    {
       selector: 'node[type="UNKNOWN"]',
       style: {
         'background-color': materialColors.cyan['100'],
