@@ -27,8 +27,8 @@ export class Link extends Entity {
     };
   }
 
-  protected get content(): string | undefined {
-    return this.input.text;
+  protected get content(): string {
+    return this.input.text ?? '';
   }
 
   public get id(): EntityId {

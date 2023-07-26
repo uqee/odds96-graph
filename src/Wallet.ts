@@ -27,11 +27,11 @@ export class Wallet extends Entity {
     let content: string = '';
 
     // header
-    content += `${Wallet.content_PAD(`👛${this.id}`)}`;
+    content += `${Wallet.PAD(`👛${this.id}`)}`;
 
     // footer
     if (this.input.text !== undefined) {
-      content += `\n${Wallet.content_LINE}`;
+      content += `\n${Wallet.LINE}`;
       content += this.input.text;
     }
 

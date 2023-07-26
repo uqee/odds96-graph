@@ -8,16 +8,17 @@ export interface EntityInput {
 }
 
 export abstract class Entity {
-  protected static readonly content_LINE: string = '-'.repeat(32);
-  protected static readonly content_PAD = (key: string): string =>
-    key.toString().padEnd(8, ' ');
+  protected static readonly LINE: string = '-'.repeat(32);
 
-  protected static data_PARSE = <T extends string>(
+  protected static MATCH = (
     regExp: RegExp,
     text: string | undefined
-  ): T | undefined => {
-    return (text?.match(regExp) ?? undefined)?.[1] as T | undefined;
+  ): RegExpMatchArray[] | undefined => {
+    return text !== undefined ? Array.from(text.matchAll(regExp)) : undefined;
   };
+
+  protected static readonly PAD = (key: string): string =>
+    key.toString().padEnd(8, ' ');
 
   //
 

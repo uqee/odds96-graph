@@ -6,6 +6,7 @@ export const isDefined = (
     value !== null &&
     value !== '' &&
     value !== 'null' &&
+    value !== 0 &&
     !Number.isNaN(value)
   );
 };

@@ -18,13 +18,11 @@ export interface ClientInput extends EntityInput {
 
 interface ClientLinkDevice {
   clientId: EntityId;
-  tags: string[];
   deviceId: EntityId;
 }
 
 interface ClientLinkWallet {
   clientId: EntityId;
-  tags: string[];
   walletId: EntityId;
 }
 
@@ -46,22 +44,13 @@ export class Client extends Entity {
   }
 
   protected get content(): string {
-    const {
-      deposits,
-      email,
-      id,
-      login,
-      name,
-      ngr,
-      phone,
-      status,
-      withdrawals,
-    } = this;
+    const { email, id, login, name, phone, status, tags } = this;
+    let { deposits, ngr, withdrawals } = this;
     let content: string = '';
 
     // header
 
-    content += Client.content_PAD(`🙂${id}`);
+    content += Client.PAD(`🙂${id}`);
     if (isDefined(status)) content += ` | ${status}`;
 
     // body
@@ -70,34 +59,39 @@ export class Client extends Entity {
       let body: string = '';
 
       if (isDefined(deposits) || isDefined(ngr) || isDefined(withdrawals)) {
-        body += `\n${Client.content_PAD('$')}`;
-        body += ` | ${Math.round(
-          (deposits ?? 0) - (withdrawals ?? 0) - (ngr ?? 0)
-        )}`;
-        body += ` (↑${Math.round(deposits ?? 0)}`;
-        body += ` ↓${Math.round(withdrawals ?? 0)}`;
-        body += ` ${Math.round(ngr ?? 0) > 0 ? '-' : '+'}`;
-        body += `${Math.round(ngr ?? 0)})`;
+        deposits = Math.round(deposits ?? 0);
+        ngr = Math.round(ngr ?? 0);
+        withdrawals = Math.round(withdrawals ?? 0);
+
+        body += `\n${Client.PAD('$')}`;
+        body += ` | ${deposits - withdrawals - ngr}`;
+        body += ` (↑${deposits} ↓${withdrawals} ${ngr > 0 ? '-' : '+'}${ngr})`;
       }
 
       if (isDefined(email)) {
-        body += `\n${Client.content_PAD('email')} | ${email}`;
+        body += `\n${Client.PAD('email')} | ${email}`;
       }
 
       if (isDefined(login)) {
-        body += `\n${Client.content_PAD('login')} | ${login}`;
+        body += `\n${Client.PAD('login')} | ${login}`;
       }
 
       if (isDefined(name)) {
-        body += `\n${Client.content_PAD('name')} | ${name}`;
+        body += `\n${Client.PAD('name')} | ${name}`;
       }
 
       if (isDefined(phone)) {
-        body += `\n${Client.content_PAD('phone')} | ${phone}`;
+        body += `\n${Client.PAD('phone')} | ${phone}`;
+      }
+
+      if (tags !== undefined) {
+        for (const tag of tags) {
+          body += `\n${Client.PAD('tag')} | ${tag}`;
+        }
       }
 
       if (isDefined(body)) {
-        content += `\n${Client.content_LINE}`;
+        content += `\n${Client.LINE}`;
         content += body;
       }
     }
@@ -112,7 +106,7 @@ export class Client extends Entity {
       }
 
       if (isDefined(footer)) {
-        content += `\n${Client.content_LINE}`;
+        content += `\n${Client.LINE}`;
         content += footer;
       }
     }
@@ -124,28 +118,28 @@ export class Client extends Entity {
 
   private get deposits(): number | undefined {
     return toNumber(
-      Client.data_PARSE<string>(
-        /\s*Deposits USD\s*\$([\d\.]+)\n/,
+      Client.MATCH(
+        /\s*Deposits USD\s*\$([\d\.]+)\n/g,
         this.input.retool_userInfo_statistics
-      )
+      )?.[0]?.[1]
     );
   }
 
   private get email(): string | undefined {
-    return Client.data_PARSE<string>(
-      /\s*Contact email\s*(\w+)\n/,
+    return Client.MATCH(
+      /\s*Contact email\s*(\w+)\n/g,
       this.input.retool_userInfo_mainInfo
-    );
+    )?.[0]?.[1];
   }
 
   public get id(): EntityId {
     return (
       this.input.id ??
       toDefined(
-        Client.data_PARSE<EntityId>(
-          /\s*Client ID\s*(\w+)\n/,
+        Client.MATCH(
+          /\s*Client ID\s*(\w+)\n/g,
           this.input.retool_userInfo_mainInfo
-        )
+        )?.[0]?.[1]
       )
     );
   }
@@ -183,9 +177,6 @@ export class Client extends Entity {
           break;
         case 3:
           assertDefined(linkDevice);
-          linkDevice.tags = (JSON.parse(line) as string[]).map((tag) =>
-            tag.replace('block_suspend_reasons:', '')
-          );
           break;
         default:
           throw new Error(`Unknown j = ${j}`);
@@ -232,9 +223,6 @@ export class Client extends Entity {
           break;
         case 3:
           assertDefined(linkWallet);
-          linkWallet.tags = (JSON.parse(line) as string[]).map((tag) =>
-            tag.replace('block_suspend_reasons:', '')
-          );
           break;
         default:
           throw new Error(`Unknown j = ${j}`);
@@ -249,22 +237,22 @@ export class Client extends Entity {
   }
 
   private get login(): string | undefined {
-    return Client.data_PARSE<string>(
-      /\s*Login\s*(\w+)\n/,
+    return Client.MATCH(
+      /\s*Login\s*(\w+)\n/g,
       this.input.retool_userInfo_mainInfo
-    );
+    )?.[0]?.[1];
   }
 
   private get name(): string | undefined {
-    const firstname: string | undefined = Client.data_PARSE<string>(
-      /\s*Firstname\s*(\w+)/,
+    const firstname: string | undefined = Client.MATCH(
+      /\s*Firstname\s*(\w+)/g,
       this.input.retool_userInfo_mainInfo
-    );
+    )?.[0]?.[1];
 
-    const lastname: string | undefined = Client.data_PARSE<string>(
-      /\s*Lastname\s*(\w+)/,
+    const lastname: string | undefined = Client.MATCH(
+      /\s*Lastname\s*(\w+)/g,
       this.input.retool_userInfo_mainInfo
-    );
+    )?.[0]?.[1];
 
     if (isDefined(firstname)) {
       return isDefined(lastname) ? `${firstname} ${lastname}` : firstname;
@@ -275,33 +263,41 @@ export class Client extends Entity {
 
   private get ngr(): number | undefined {
     return toNumber(
-      Client.data_PARSE<string>(
-        /\s*NGR Total USD\s*\$([\d\.]+)\n/,
+      Client.MATCH(
+        /\s*NGR Total USD\s*\$([\d\.]+)\n/g,
         this.input.retool_userInfo_statistics
-      )
+      )?.[0]?.[1]
     );
   }
 
   private get phone(): string | undefined {
-    return Client.data_PARSE<string>(
-      /\s*Contact phone\s*(\w+)\n/,
+    return Client.MATCH(
+      /\s*Contact phone\s*(\w+)\n/g,
       this.input.retool_userInfo_mainInfo
-    );
+    )?.[0]?.[1];
   }
 
   private get status(): string | undefined {
-    return Client.data_PARSE<string>(
-      /\s*Status\s*(\w+)\n/,
+    return Client.MATCH(
+      /\s*Status\s*(\w+)\n/g,
       this.input.retool_userInfo_mainInfo
-    );
+    )?.[0]?.[1];
+  }
+
+  private get tags(): string[] | undefined {
+    const tags: string[] | undefined = Client.MATCH(
+      /\s*block_suspend_reasons:([^\n]+)\n/g,
+      this.input.retool_userInfo_statistics
+    )?.map((match) => match[1]);
+    return tags?.length !== 0 ? tags : undefined;
   }
 
   private get withdrawals(): number | undefined {
     return toNumber(
-      Client.data_PARSE<string>(
-        /\s*Withdrawals USD\s*\$([\d\.]+)\n/,
+      Client.MATCH(
+        /\s*Withdrawals USD\s*\$([\d\.]+)\n/g,
         this.input.retool_userInfo_statistics
-      )
+      )?.[0]?.[1]
     );
   }
 }

@@ -27,11 +27,11 @@ export class Device extends Entity {
     let content: string = '';
 
     // header
-    content += `${Device.content_PAD(`📱${this.id}`)}`;
+    content += `${Device.PAD(`📱${this.id}`)}`;
 
     // footer
     if (this.input.text !== undefined) {
-      content += `\n${Device.content_LINE}`;
+      content += `\n${Device.LINE}`;
       content += this.input.text;
     }
 

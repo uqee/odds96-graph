@@ -40,25 +40,21 @@ export const toElements = (
       const link1: Link = new Link({
         source: client.id,
         target: linkDevice.deviceId,
-        text: (linkDevice.tags ?? []).join('\n'),
       });
 
       const link2: Link = new Link({
         source: linkDevice.deviceId,
         target: client.id,
-        text: (linkDevice.tags ?? []).join('\n'),
       });
 
       const link3: Link = new Link({
         source: linkDevice.clientId,
         target: linkDevice.deviceId,
-        text: (linkDevice.tags ?? []).join('\n'),
       });
 
       const link4: Link = new Link({
         source: linkDevice.deviceId,
         target: linkDevice.clientId,
-        text: (linkDevice.tags ?? []).join('\n'),
       });
 
       if (!edges.has(link1.id) && !edges.has(link2.id)) {
@@ -86,25 +82,21 @@ export const toElements = (
       const link1: Link = new Link({
         source: client.id,
         target: linkWallet.walletId,
-        text: (linkWallet.tags ?? []).join('\n'),
       });
 
       const link2: Link = new Link({
         source: linkWallet.walletId,
         target: client.id,
-        text: (linkWallet.tags ?? []).join('\n'),
       });
 
       const link3: Link = new Link({
         source: linkWallet.clientId,
         target: linkWallet.walletId,
-        text: (linkWallet.tags ?? []).join('\n'),
       });
 
       const link4: Link = new Link({
         source: linkWallet.walletId,
         target: linkWallet.clientId,
-        text: (linkWallet.tags ?? []).join('\n'),
       });
 
       if (!edges.has(link1.id) && !edges.has(link2.id)) {

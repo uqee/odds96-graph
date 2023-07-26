@@ -50,14 +50,20 @@ export const clientInputs: ClientInput[] = [
       User 64bbe309bcc54840dc4feb47
     `,
     retool_userInfo_statistics: `
+      Currency	INR
+      Total stakes (sports)	0 INR
+      Total stakes USD (sports)	$0.00
+      No. of bets (sports)	0
+      Unsettled sports stakes	0 INR
+      Unsettled sports stakes USD	$0.00
       Sportsbook GGR	
       0 INR
       Sportsbook GGR USD	
       $0
       Casino GGR	
-      6562.2 INR
+      6862.2 INR
       Casino GGR USD	
-      $78.75
+      $82.35
       Deposits	7000 INR
       Deposits USD	$84.00
       No. of deposits	2
@@ -69,8 +75,14 @@ export const clientInputs: ClientInput[] = [
       Fin Pnl USD	
       $84
       Bookmaker fee	0
-      NGR Total	6562.2 INR
-      NGR Total USD	$78.75
+      NGR Total	6862.2 INR
+      NGR Total USD	$82.35
+      Main balance	
+      Currency	INR
+      Balance	137.8
+      Balance USD	$1.65
+      NGR_total	6862.20
+      NGR_total_USD	82.35
     `,
     root: true,
     text: ``,
@@ -124,6 +136,12 @@ export const clientInputs: ClientInput[] = [
       User 64ab9c2e79095b43366d1abf
     `,
     retool_userInfo_statistics: `
+      Currency	INR
+      Total stakes (sports)	2200 INR
+      Total stakes USD (sports)	$26.40
+      No. of bets (sports)	12
+      Unsettled sports stakes	0 INR
+      Unsettled sports stakes USD	$0.00
       Sportsbook GGR	
       -728 INR
       Sportsbook GGR USD	
@@ -145,6 +163,13 @@ export const clientInputs: ClientInput[] = [
       Bookmaker fee	0
       NGR Total	560 INR
       NGR Total USD	$6.72
+      Main balance	
+      Currency	INR
+      Balance	0
+      Balance USD	$0.00
+      NGR_total	560.00
+      NGR_total_USD	6.72
+      block_suspend_reasons:General:Multi_Accounting
     `,
     root: false,
     text: ``,
@@ -211,6 +236,12 @@ export const clientInputs: ClientInput[] = [
       User 6476ec5696448d179cd3826c
     `,
     retool_userInfo_statistics: `
+      Currency	INR
+      Total stakes (sports)	0 INR
+      Total stakes USD (sports)	$0.00
+      No. of bets (sports)	0
+      Unsettled sports stakes	0 INR
+      Unsettled sports stakes USD	$0.00
       Sportsbook GGR	
       0 INR
       Sportsbook GGR USD	
@@ -232,6 +263,12 @@ export const clientInputs: ClientInput[] = [
       Bookmaker fee	0
       NGR Total	2751.91 INR
       NGR Total USD	$33.02
+      Main balance	
+      Currency	INR
+      Balance	8.09
+      Balance USD	$0.10
+      NGR_total	2751.91
+      NGR_total_USD	33.02    
     `,
     root: false,
     text: ``,
@@ -282,6 +319,12 @@ export const clientInputs: ClientInput[] = [
       User 64a45d1cdac5691b82671cc0
     `,
     retool_userInfo_statistics: `
+      Currency	INR
+      Total stakes (sports)	0 INR
+      Total stakes USD (sports)	$0.00
+      No. of bets (sports)	0
+      Unsettled sports stakes	0 INR
+      Unsettled sports stakes USD	$0.00
       Sportsbook GGR	
       0 INR
       Sportsbook GGR USD	
@@ -303,6 +346,13 @@ export const clientInputs: ClientInput[] = [
       Bookmaker fee	0
       NGR Total	860 INR
       NGR Total USD	$10.32
+      Main balance	
+      Currency	INR
+      Balance	0
+      Balance USD	$0.00
+      NGR_total	860.00
+      NGR_total_USD	10.32
+      block_suspend_reasons:General:Underage
     `,
     root: false,
     text: ``,
@@ -349,6 +399,12 @@ export const clientInputs: ClientInput[] = [
       User
     `,
     retool_userInfo_statistics: `
+      Currency	INR
+      Total stakes (sports)	0 INR
+      Total stakes USD (sports)	$0.00
+      No. of bets (sports)	0
+      Unsettled sports stakes	0 INR
+      Unsettled sports stakes USD	$0.00
       Sportsbook GGR	
       0 INR
       Sportsbook GGR USD	
@@ -370,6 +426,13 @@ export const clientInputs: ClientInput[] = [
       Bookmaker fee	0
       NGR Total	-40 INR
       NGR Total USD	-$0.48
+      Main balance	
+      Currency	INR
+      Balance	0
+      Balance USD	$0.00
+      NGR_total	-40.00
+      NGR_total_USD	-0.48
+      block_suspend_reasons:General:Multi_Accounting
     `,
     root: false,
     text: ``,
