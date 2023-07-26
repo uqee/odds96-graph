@@ -36,10 +36,7 @@ export const toElements = (
       if (link.parameter === undefined) continue;
 
       if (!nodes.has(link.parameter)) {
-        nodes.set(
-          link.parameter,
-          new Unknown({ id: link.parameter, type: link.type })
-        );
+        nodes.set(link.parameter, new Unknown({ id: link.parameter }));
       }
 
       //

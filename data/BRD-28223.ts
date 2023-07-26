@@ -2,13 +2,12 @@ import { ClientInput } from '../src';
 
 export const clientInputs: ClientInput[] = [
   {
-    redash_fraudControl_allClientsSameAccount: `
+    redash_fraudControl: `
       324653
       9306440703@fam
       payment_form
       ["block_suspend_reasons:General:Underage"]
-    `,
-    redash_fraudControl_allClientsSameDevice: `
+
       301139
       b89ddd95-532d-433f-9274-104043c54514
       330515
@@ -88,13 +87,12 @@ export const clientInputs: ClientInput[] = [
   },
 
   {
-    redash_fraudControl_allClientsSameAccount: `
+    redash_fraudControl: `
       324653
       9306440703@fam
       payment_form
       ["block_suspend_reasons:General:Underage"]
-    `,
-    redash_fraudControl_allClientsSameDevice: `
+
       301139
       b89ddd95-532d-433f-9274-104043c54514
       347176
@@ -174,13 +172,12 @@ export const clientInputs: ClientInput[] = [
   },
 
   {
-    redash_fraudControl_allClientsSameAccount: `
+    redash_fraudControl: `
       324653
       9306440703@fam
       payment_form
       ["block_suspend_reasons:General:Underage"]
-    `,
-    redash_fraudControl_allClientsSameDevice: `
+
       324653
       04d5083a-82a6-43de-a679-c394a76921ee
       ["block_suspend_reasons:General:Underage"]
@@ -272,8 +269,7 @@ export const clientInputs: ClientInput[] = [
   },
 
   {
-    redash_fraudControl_allClientsSameAccount: ``,
-    redash_fraudControl_allClientsSameDevice: `
+    redash_fraudControl: `
       301139
       4bb48582-8d3d-4303-bd69-ea4625ed5957
       301139
@@ -355,8 +351,7 @@ export const clientInputs: ClientInput[] = [
   },
 
   {
-    redash_fraudControl_allClientsSameAccount: ``,
-    redash_fraudControl_allClientsSameDevice: `
+    redash_fraudControl: `
       301139
       cf13b900-f83c-47cb-9789-e8ace6bfb79c
     `,

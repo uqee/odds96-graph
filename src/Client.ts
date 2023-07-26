@@ -19,7 +19,6 @@ interface ClientLink {
   parameter?: string;
   section?: string;
   tags?: string;
-  type?: EntityType;
 }
 
 export class Client extends Entity {
@@ -166,8 +165,6 @@ export class Client extends Entity {
         case 1:
           assertDefined(link);
           link.parameter = line;
-
-          if (line.match(/^[\d\-]{32}$/)) link.type = EntityType.DEVICE;
           break;
         case 2:
           assertDefined(link);
