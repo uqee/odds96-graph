@@ -114,9 +114,9 @@ export class Client extends Entity {
   private get deposits(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*Deposits USD\s*\$([\d\.]+)\n/g,
+        /\s*Deposits USD\s*\$([\d\.,]+)\n/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]
+      )?.[0]?.[1]?.replace(',', '')
     );
   }
 
@@ -212,9 +212,9 @@ export class Client extends Entity {
   private get ngr(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*NGR Total USD\s*\$([\d\.]+)\n/g,
+        /\s*NGR Total USD\s*\$([\d\.,]+)\n/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]
+      )?.[0]?.[1]?.replace(',', '')
     );
   }
 
@@ -243,9 +243,9 @@ export class Client extends Entity {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*Withdrawals USD\s*\$([\d\.]+)\n/g,
+        /\s*Withdrawals USD\s*\$([\d\.,]+)\n/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]
+      )?.[0]?.[1]?.replace(',', '')
     );
   }
 }
