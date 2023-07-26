@@ -12,8 +12,7 @@ export interface ClientInput extends EntityInput {
   id?: Entity['id'];
   redash_fraudControl_allClientsSameAccount?: string;
   redash_fraudControl_allClientsSameDevice?: string;
-  retool_userInfo_mainInfo?: string;
-  retool_userInfo_statistics?: string;
+  retool_userInfo?: string;
 }
 
 interface ClientLinkDevice {
@@ -120,7 +119,7 @@ export class Client extends Entity {
     return toNumber(
       Client.MATCH(
         /\s*Deposits USD\s*\$([\d\.]+)\n/g,
-        this.input.retool_userInfo_statistics
+        this.input.retool_userInfo
       )?.[0]?.[1]
     );
   }
@@ -128,7 +127,7 @@ export class Client extends Entity {
   private get email(): string | undefined {
     return Client.MATCH(
       /\s*Contact email\s*(\w+)\n/g,
-      this.input.retool_userInfo_mainInfo
+      this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
@@ -138,7 +137,7 @@ export class Client extends Entity {
       toDefined(
         Client.MATCH(
           /\s*Client ID\s*(\w+)\n/g,
-          this.input.retool_userInfo_mainInfo
+          this.input.retool_userInfo
         )?.[0]?.[1]
       )
     );
@@ -173,8 +172,6 @@ export class Client extends Entity {
           linkDevice.deviceId = line;
           break;
         case 2:
-          assertDefined(linkDevice);
-          break;
         case 3:
           assertDefined(linkDevice);
           break;
@@ -219,8 +216,6 @@ export class Client extends Entity {
           linkWallet.walletId = line;
           break;
         case 2:
-          assertDefined(linkWallet);
-          break;
         case 3:
           assertDefined(linkWallet);
           break;
@@ -239,19 +234,19 @@ export class Client extends Entity {
   private get login(): string | undefined {
     return Client.MATCH(
       /\s*Login\s*(\w+)\n/g,
-      this.input.retool_userInfo_mainInfo
+      this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get name(): string | undefined {
     const firstname: string | undefined = Client.MATCH(
       /\s*Firstname\s*(\w+)/g,
-      this.input.retool_userInfo_mainInfo
+      this.input.retool_userInfo
     )?.[0]?.[1];
 
     const lastname: string | undefined = Client.MATCH(
       /\s*Lastname\s*(\w+)/g,
-      this.input.retool_userInfo_mainInfo
+      this.input.retool_userInfo
     )?.[0]?.[1];
 
     if (isDefined(firstname)) {
@@ -265,7 +260,7 @@ export class Client extends Entity {
     return toNumber(
       Client.MATCH(
         /\s*NGR Total USD\s*\$([\d\.]+)\n/g,
-        this.input.retool_userInfo_statistics
+        this.input.retool_userInfo
       )?.[0]?.[1]
     );
   }
@@ -273,21 +268,21 @@ export class Client extends Entity {
   private get phone(): string | undefined {
     return Client.MATCH(
       /\s*Contact phone\s*(\w+)\n/g,
-      this.input.retool_userInfo_mainInfo
+      this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get status(): string | undefined {
     return Client.MATCH(
       /\s*Status\s*(\w+)\n/g,
-      this.input.retool_userInfo_mainInfo
+      this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get tags(): string[] | undefined {
     const tags: string[] | undefined = Client.MATCH(
       /\s*block_suspend_reasons:([^\n]+)\n/g,
-      this.input.retool_userInfo_statistics
+      this.input.retool_userInfo
     )?.map((match) => match[1]);
     return tags?.length !== 0 ? tags : undefined;
   }
@@ -296,7 +291,7 @@ export class Client extends Entity {
     return toNumber(
       Client.MATCH(
         /\s*Withdrawals USD\s*\$([\d\.]+)\n/g,
-        this.input.retool_userInfo_statistics
+        this.input.retool_userInfo
       )?.[0]?.[1]
     );
   }

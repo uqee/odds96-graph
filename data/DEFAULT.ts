@@ -15,7 +15,8 @@ export const clientInputs: ClientInput[] = [
       b89ddd95-532d-433f-9274-104043c54514
       ["block_suspend_reasons:General:Multi_Accounting"]
     `,
-    retool_userInfo_mainInfo: `
+    retool_userInfo: `
+      MAIN INFO
       Client ID	347176
       User ID	4926600423
       Login	919818598509
@@ -26,7 +27,7 @@ export const clientInputs: ClientInput[] = [
       Social Login	✘
       IsTest	✘
       Is Trusted	✘
-      Verification status	InProgress
+      Verification status	Done
       Auto withdrawal score	1.0
       Auto withdrawal factors	regular_clients_same_name, regular_clients_same_phone, regular_clients_same_device, regular_clients_same_account_front, fraud_clients_same_account_front
       Client suspend score	0.5
@@ -39,17 +40,16 @@ export const clientInputs: ClientInput[] = [
       User 347176 MTS Profile
       CasinoLoyaltyProfile	
       User 548552921
-      Firstname	null
+      Firstname	Ankit
       Lastname	null
-      Birthdate	null
+      Birthdate	18/12/96
       Contact phone	919818598509
       Phone Verified	✔
       Contact email	ankitchhachhia0@gmail.com
       Email Verified	✔
       Sumsub Profile	
       User 64bbe309bcc54840dc4feb47
-    `,
-    retool_userInfo_statistics: `
+      STATISTICS
       Currency	INR
       Total stakes (sports)	0 INR
       Total stakes USD (sports)	$0.00
@@ -82,7 +82,7 @@ export const clientInputs: ClientInput[] = [
       Balance	137.8
       Balance USD	$1.65
       NGR_total	6862.20
-      NGR_total_USD	82.35
+      NGR_total_USD	82.35    
     `,
     root: true,
     text: ``,
@@ -101,7 +101,8 @@ export const clientInputs: ClientInput[] = [
       347176
       b89ddd95-532d-433f-9274-104043c54514
     `,
-    retool_userInfo_mainInfo: `
+    retool_userInfo: `
+      MAIN INFO
       Client ID	330515
       User ID	1982586750
       Login	918810680235
@@ -134,8 +135,7 @@ export const clientInputs: ClientInput[] = [
       Email Verified	✔
       Sumsub Profile	
       User 64ab9c2e79095b43366d1abf
-    `,
-    retool_userInfo_statistics: `
+      STATISTICS
       Currency	INR
       Total stakes (sports)	2200 INR
       Total stakes USD (sports)	$26.40
@@ -201,7 +201,8 @@ export const clientInputs: ClientInput[] = [
       b89ddd95-532d-433f-9274-104043c54514
       ["block_suspend_reasons:General:Multi_Accounting"]
     `,
-    retool_userInfo_mainInfo: `
+    retool_userInfo: `
+      MAIN INFO
       Client ID	301139
       User ID	9885050622
       Login	919306440703
@@ -234,8 +235,7 @@ export const clientInputs: ClientInput[] = [
       Email Verified	✔
       Sumsub Profile	
       User 6476ec5696448d179cd3826c
-    `,
-    retool_userInfo_statistics: `
+      STATISTICS
       Currency	INR
       Total stakes (sports)	0 INR
       Total stakes USD (sports)	$0.00
@@ -284,7 +284,8 @@ export const clientInputs: ClientInput[] = [
       301139
       04d5083a-82a6-43de-a679-c394a76921ee
     `,
-    retool_userInfo_mainInfo: `
+    retool_userInfo: `
+      MAIN INFO
       Client ID	324653
       User ID	4562627391
       Login	917988075591
@@ -317,8 +318,7 @@ export const clientInputs: ClientInput[] = [
       Email Verified	✔
       Sumsub Profile	
       User 64a45d1cdac5691b82671cc0
-    `,
-    retool_userInfo_statistics: `
+      STATISTICS
       Currency	INR
       Total stakes (sports)	0 INR
       Total stakes USD (sports)	$0.00
@@ -364,7 +364,8 @@ export const clientInputs: ClientInput[] = [
       301139
       cf13b900-f83c-47cb-9789-e8ace6bfb79c
     `,
-    retool_userInfo_mainInfo: `
+    retool_userInfo: `
+      MAIN INFO
       Client ID	305242
       User ID	3764569793
       Login	singhsinghroha123@gmail.com
@@ -397,8 +398,7 @@ export const clientInputs: ClientInput[] = [
       Email Verified	✔
       Sumsub Profile	
       User
-    `,
-    retool_userInfo_statistics: `
+      STATISTICS
       Currency	INR
       Total stakes (sports)	0 INR
       Total stakes USD (sports)	$0.00
