@@ -122,7 +122,7 @@ export class Client extends Entity {
 
   private get email(): string | undefined {
     return Client.MATCH(
-      /\s*Contact email\s*(\w+)\n/g,
+      /\s*Contact email\s*([^\n]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
