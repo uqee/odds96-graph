@@ -20,6 +20,7 @@ export const toElements = (
 
   for (let i = 0; i < clientInputs.length; i++) {
     const clientInput = clientInputs[i];
+    if (i === 0) clientInput.root = true;
 
     const client: Client = new Client(clientInput);
     nodes.set(client.id, client);

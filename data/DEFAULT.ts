@@ -84,7 +84,6 @@ export const clientInputs: ClientInput[] = [
       NGR_total	6862.20
       NGR_total_USD	82.35    
     `,
-    root: true,
     text: ``,
   },
 
@@ -171,7 +170,6 @@ export const clientInputs: ClientInput[] = [
       NGR_total_USD	6.72
       block_suspend_reasons:General:Multi_Accounting
     `,
-    root: false,
     text: ``,
   },
 
@@ -270,7 +268,6 @@ export const clientInputs: ClientInput[] = [
       NGR_total	2751.91
       NGR_total_USD	33.02    
     `,
-    root: false,
     text: ``,
   },
 
@@ -354,7 +351,6 @@ export const clientInputs: ClientInput[] = [
       NGR_total_USD	10.32
       block_suspend_reasons:General:Underage
     `,
-    root: false,
     text: ``,
   },
 
@@ -434,7 +430,6 @@ export const clientInputs: ClientInput[] = [
       NGR_total_USD	-0.48
       block_suspend_reasons:General:Multi_Accounting
     `,
-    root: false,
     text: ``,
   },
 ];
