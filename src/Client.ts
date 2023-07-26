@@ -10,19 +10,16 @@ import { toNumber } from './toNumber';
 
 export interface ClientInput extends EntityInput {
   id?: Entity['id'];
-  redash_fraudControl_allClientsSameAccount?: string;
-  redash_fraudControl_allClientsSameDevice?: string;
+  redash_fraudControl?: string;
   retool_userInfo?: string;
 }
 
-interface ClientLinkDevice {
+interface ClientLink {
   clientId: EntityId;
-  deviceId: EntityId;
-}
-
-interface ClientLinkWallet {
-  clientId: EntityId;
-  walletId: EntityId;
+  parameter?: string;
+  section?: string;
+  tags?: string;
+  type?: EntityType;
 }
 
 export class Client extends Entity {
@@ -35,7 +32,7 @@ export class Client extends Entity {
       data: {
         content: this.content,
         id: this.id,
-        root: this.input.root === true ? true : undefined,
+        root: this.input.root,
         status: this.status,
         type: EntityType.CLIENT,
       },
@@ -49,7 +46,7 @@ export class Client extends Entity {
 
     // header
 
-    content += Client.PAD(`🙂${id}`);
+    content += Client.PAD(id);
     if (isDefined(status)) content += ` | ${status}`;
 
     // body
@@ -64,7 +61,7 @@ export class Client extends Entity {
 
         body += `\n${Client.PAD('$')}`;
         body += ` | ${deposits - withdrawals - ngr}`;
-        body += ` (↑${deposits} ↓${withdrawals} ${ngr > 0 ? '-' : '+'}${ngr})`;
+        body += ` = ↑${deposits} ↓${withdrawals} ${ngr > 0 ? '-' : '+'}${ngr}`;
       }
 
       if (isDefined(email)) {
@@ -143,92 +140,51 @@ export class Client extends Entity {
     );
   }
 
-  public get linkDevices(): ClientLinkDevice[] {
+  public get links(): ClientLink[] {
+    const links: ClientLink[] = [];
+
     const lines: string[] =
-      this.input.redash_fraudControl_allClientsSameDevice
+      this.input.redash_fraudControl
         ?.split('\n')
         .map((line) => line.trim())
         .filter((line) => line !== '') ?? [];
 
-    const linkDevices: ClientLinkDevice[] = [];
-    let linkDevice: ClientLinkDevice | undefined;
-    let j: number = 0;
+    let icell: number = 0;
+    let link: ClientLink | undefined;
 
-    for (let i = 0; i < lines.length; i++) {
-      const line: string = lines[i];
+    for (let irow = 0; irow < lines.length; irow++) {
+      const line: string = lines[irow];
 
-      if (line.match(/^\d{1,7}$/)) j = 0;
-      else j++;
+      if (line.match(/^\d{1,7}$/)) icell = 0;
+      else icell++;
 
-      switch (j) {
+      switch (icell) {
         case 0:
-          if (linkDevice !== undefined) {
-            linkDevices.push(linkDevice);
-          }
-          linkDevice = { clientId: line } as ClientLinkDevice;
+          if (link !== undefined) links.push(link);
+          link = { clientId: line };
           break;
         case 1:
-          assertDefined(linkDevice);
-          linkDevice.deviceId = line;
+          assertDefined(link);
+          link.parameter = line;
+
+          if (line.match(/^[\d\-]{32}$/)) link.type = EntityType.DEVICE;
           break;
         case 2:
+          assertDefined(link);
+          link.section = line;
+          break;
         case 3:
-          assertDefined(linkDevice);
+          assertDefined(link);
+          link.tags = line;
           break;
         default:
-          throw new Error(`Unknown j = ${j}`);
+          throw new Error(`Unknown icell = ${icell}`);
       }
     }
 
-    if (linkDevice !== undefined) {
-      linkDevices.push(linkDevice);
-    }
+    if (link !== undefined) links.push(link);
 
-    return linkDevices;
-  }
-
-  public get linkWallets(): ClientLinkWallet[] {
-    const lines: string[] =
-      this.input.redash_fraudControl_allClientsSameAccount
-        ?.split('\n')
-        .map((line) => line.trim())
-        .filter((line) => line !== '') ?? [];
-
-    const linkWallets: ClientLinkWallet[] = [];
-    let linkWallet: ClientLinkWallet | undefined;
-    let j: number = 0;
-
-    for (let i = 0; i < lines.length; i++) {
-      const line: string = lines[i];
-
-      if (line.match(/^\d{1,7}$/)) j = 0;
-      else j++;
-
-      switch (j) {
-        case 0:
-          if (linkWallet !== undefined) {
-            linkWallets.push(linkWallet);
-          }
-          linkWallet = { clientId: line } as ClientLinkWallet;
-          break;
-        case 1:
-          assertDefined(linkWallet);
-          linkWallet.walletId = line;
-          break;
-        case 2:
-        case 3:
-          assertDefined(linkWallet);
-          break;
-        default:
-          throw new Error(`Unknown j = ${j}`);
-      }
-    }
-
-    if (linkWallet !== undefined) {
-      linkWallets.push(linkWallet);
-    }
-
-    return linkWallets;
+    return links;
   }
 
   private get login(): string | undefined {

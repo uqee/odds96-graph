@@ -18,7 +18,7 @@ export abstract class Entity {
   };
 
   protected static readonly PAD = (key: string): string =>
-    key.toString().padEnd(8, ' ');
+    key.toString().padEnd(7, ' ');
 
   //
 

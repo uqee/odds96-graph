@@ -85,7 +85,7 @@ cytoscape({
       },
     },
     {
-      selector: 'node[type="DEVICE"], node[type="WALLET"]',
+      selector: 'node[type="UNKNOWN"]',
       style: {
         'background-color': materialColors.cyan['100'],
         'border-color': materialColors.cyan['700'],

@@ -1,15 +1,17 @@
 import { NodeDefinition } from 'cytoscape';
+import { Emoji } from './Emoji';
 
 import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
 
-export interface WalletInput extends EntityInput {
+export interface UnknownInput extends EntityInput {
   id: Entity['id'];
+  type?: EntityType;
 }
 
-export class Wallet extends Entity {
-  public constructor(protected input: WalletInput) {
+export class Unknown extends Entity {
+  public constructor(protected input: UnknownInput) {
     super();
   }
 
@@ -18,7 +20,7 @@ export class Wallet extends Entity {
       data: {
         content: this.content,
         id: this.id,
-        type: EntityType.WALLET,
+        type: this.type,
       },
     };
   }
@@ -27,11 +29,24 @@ export class Wallet extends Entity {
     let content: string = '';
 
     // header
-    content += `${Wallet.PAD(`👛${this.id}`)}`;
+
+    switch (this.type) {
+      case EntityType.DEVICE:
+        content += Emoji.DEVICE;
+        break;
+      case EntityType.WALLET:
+        content += Emoji.WALLET;
+        break;
+      default:
+        break;
+    }
+
+    content += Unknown.PAD(this.id);
 
     // footer
+
     if (this.input.text !== undefined) {
-      content += `\n${Wallet.LINE}`;
+      content += `\n${Unknown.LINE}`;
       content += this.input.text;
     }
 
@@ -40,5 +55,9 @@ export class Wallet extends Entity {
 
   public get id(): EntityId {
     return this.input.id;
+  }
+
+  public get type(): EntityType {
+    return this.input.type ?? EntityType.UNKNOWN;
   }
 }

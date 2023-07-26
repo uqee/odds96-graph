@@ -1,6 +1,5 @@
 export * from './assertDefined';
 export * from './Client';
-export * from './Device';
 export * from './Emoji';
 export * from './Entity';
 export * from './EntityId';
@@ -11,4 +10,4 @@ export * from './Link';
 export * from './toDefined';
 export * from './toElements';
 export * from './toNumber';
-export * from './Wallet';
+export * from './Unknown';
