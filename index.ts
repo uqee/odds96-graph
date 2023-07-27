@@ -10,7 +10,7 @@ import cytoscapeNavigator from 'cytoscape-navigator';
 import 'cytoscape-navigator/cytoscape.js-navigator.css';
 import materialColors from 'material-colors';
 
-import { clientInputs } from './data';
+import { clientInputs } from './EDITME';
 import './index.css';
 import { toElements } from './src';
 

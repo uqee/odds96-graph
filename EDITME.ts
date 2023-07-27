@@ -1,4 +1,4 @@
-import { ClientInput } from '../src';
+import { ClientInput } from './src';
 
 export const clientInputs: ClientInput[] = [
   {
