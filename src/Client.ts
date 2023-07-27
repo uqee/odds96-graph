@@ -118,7 +118,7 @@ export class Client extends Entity {
   private get deposits(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*Deposits USD\s*\$([^\n]+)\n/g,
+        /\s*Deposits USD\s*\$([^\s]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -126,7 +126,7 @@ export class Client extends Entity {
 
   private get email(): string | undefined {
     return Client.MATCH(
-      /\s*Contact email\s*([^\n]+)\n/g,
+      /\s*Contact email\s*([^\s]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -136,7 +136,7 @@ export class Client extends Entity {
       this.input.id ??
       toDefined(
         Client.MATCH(
-          /\s*Client ID\s*([^\n]+)\n/g,
+          /\s*Client ID\s*([^\s]+)\n/g,
           this.input.retool_userInfo
         )?.[0]?.[1]
       )
@@ -190,19 +190,19 @@ export class Client extends Entity {
 
   private get login(): string | undefined {
     return Client.MATCH(
-      /\s*Login\s*([^\n]+)\n/g,
+      /\s*Login\s*([^\s]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get name(): string | undefined {
     const firstname: string | undefined = Client.MATCH(
-      /\s*Firstname\s*([^\n]+)/g,
+      /\s*Firstname\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
 
     const lastname: string | undefined = Client.MATCH(
-      /\s*Lastname\s*([^\n]+)/g,
+      /\s*Lastname\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
 
@@ -216,7 +216,7 @@ export class Client extends Entity {
   private get ngr(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*NGR Total USD\s*\$([^\n]+)\n/g,
+        /\s*NGR Total USD\s*\$([^\s]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -224,28 +224,28 @@ export class Client extends Entity {
 
   private get phone(): string | undefined {
     return Client.MATCH(
-      /\s*Contact phone\s*([^\n]+)\n/g,
+      /\s*Contact phone\s*([^\s]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get reg(): string | undefined {
     return Client.MATCH(
-      /\s*Registration date\(UTC\)\s*([^\n]+)\n/g,
+      /\s*Registration date\(UTC\)\s*([^\s]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get status(): string | undefined {
     return Client.MATCH(
-      /\s*Status\s*([^\n]+)\n/g,
+      /\s*Status\s*([^\n]+)\s/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get tags(): string[] | undefined {
     const tags: string[] | undefined = Client.MATCH(
-      /\s*block_suspend_reasons:([^\n]+)\n/g,
+      /\s*block_suspend_reasons:([^\s]+)\n/g,
       this.input.retool_userInfo
     )?.map((match) => match[1]);
     return tags?.length !== 0 ? tags : undefined;
@@ -254,7 +254,7 @@ export class Client extends Entity {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*Withdrawals USD\s*\$([^\n]+)\n/g,
+        /\s*Withdrawals USD\s*\$([^\s]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
