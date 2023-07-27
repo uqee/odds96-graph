@@ -39,7 +39,7 @@ export class Client extends Entity {
   }
 
   protected get content(): string {
-    const { email, id, login, name, phone, status, tags } = this;
+    const { email, id, login, name, phone, regdate, status, tags } = this;
     let { deposits, ngr, withdrawals } = this;
     let content: string = '';
 
@@ -77,6 +77,10 @@ export class Client extends Entity {
 
       if (isDefined(phone)) {
         body += `\n${Client.PAD('phone')} | ${phone}`;
+      }
+
+      if (isDefined(regdate)) {
+        body += `\n${Client.PAD('regdate')} | ${regdate}`;
       }
 
       if (tags !== undefined) {
@@ -221,6 +225,13 @@ export class Client extends Entity {
   private get phone(): string | undefined {
     return Client.MATCH(
       /\s*Contact phone\s*(\w+)\n/g,
+      this.input.retool_userInfo
+    )?.[0]?.[1];
+  }
+
+  private get regdate(): string | undefined {
+    return Client.MATCH(
+      /\s*Registration date\(UTC\)\s*([^\n]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
