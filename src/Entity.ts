@@ -8,7 +8,7 @@ export interface EntityInput {
 }
 
 export abstract class Entity {
-  private static LENGTH_MAX: number = 32;
+  private static LENGTH_MAX: number = 36;
   private static LENGTH_MIN: number = 7;
 
   protected static readonly LINE: string = '-'.repeat(Entity.LENGTH_MAX);
