@@ -118,7 +118,7 @@ export class Client extends Entity {
   private get deposits(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*Deposits USD\s*\$([\d\.,]+)\n/g,
+        /\s*Deposits USD\s*\$([^\n]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -136,7 +136,7 @@ export class Client extends Entity {
       this.input.id ??
       toDefined(
         Client.MATCH(
-          /\s*Client ID\s*(\w+)\n/g,
+          /\s*Client ID\s*([^\n]+)\n/g,
           this.input.retool_userInfo
         )?.[0]?.[1]
       )
@@ -190,19 +190,19 @@ export class Client extends Entity {
 
   private get login(): string | undefined {
     return Client.MATCH(
-      /\s*Login\s*(\w+)\n/g,
+      /\s*Login\s*([^\n]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get name(): string | undefined {
     const firstname: string | undefined = Client.MATCH(
-      /\s*Firstname\s*(\w+)/g,
+      /\s*Firstname\s*([^\n]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
 
     const lastname: string | undefined = Client.MATCH(
-      /\s*Lastname\s*(\w+)/g,
+      /\s*Lastname\s*([^\n]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
 
@@ -216,7 +216,7 @@ export class Client extends Entity {
   private get ngr(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*NGR Total USD\s*\$([\d\.,]+)\n/g,
+        /\s*NGR Total USD\s*\$([^\n]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -224,7 +224,7 @@ export class Client extends Entity {
 
   private get phone(): string | undefined {
     return Client.MATCH(
-      /\s*Contact phone\s*(\w+)\n/g,
+      /\s*Contact phone\s*([^\n]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -238,7 +238,7 @@ export class Client extends Entity {
 
   private get status(): string | undefined {
     return Client.MATCH(
-      /\s*Status\s*(\w+)\n/g,
+      /\s*Status\s*([^\n]+)\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -254,7 +254,7 @@ export class Client extends Entity {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.MATCH(
-        /\s*Withdrawals USD\s*\$([\d\.,]+)\n/g,
+        /\s*Withdrawals USD\s*\$([^\n]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
