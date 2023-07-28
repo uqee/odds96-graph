@@ -37,124 +37,40 @@ export const toElements = (
       if (!nodes.has(link.parameter)) {
         nodes.set(
           link.parameter,
-          new Default({ id: link.parameter, type: link.type })
+          new Node({ id: link.parameter, type: link.type })
         );
       }
 
       //
 
-      const link1: Link = new Link({
+      const edge1: Edge = new Edge({
         source: client.id,
         target: link.parameter,
       });
 
-      const link2: Link = new Link({
+      const edge2: Edge = new Edge({
         source: link.parameter,
         target: client.id,
       });
 
-      const link3: Link = new Link({
+      const edge3: Edge = new Edge({
         source: link.clientId,
         target: link.parameter,
       });
 
-      const link4: Link = new Link({
+      const edge4: Edge = new Edge({
         source: link.parameter,
         target: link.clientId,
       });
 
-      if (!edges.has(link1.id) && !edges.has(link2.id)) {
-        edges.set(link1.id, link1);
+      if (!edges.has(edge1.id) && !edges.has(edge2.id)) {
+        edges.set(edge1.id, edge1);
       }
 
-      if (!edges.has(link3.id) && !edges.has(link4.id)) {
-        edges.set(link3.id, link3);
+      if (!edges.has(edge3.id) && !edges.has(edge4.id)) {
+        edges.set(edge3.id, edge3);
       }
     }
-
-    // for (const linkDevice of client.linkDevices) {
-    //   //
-
-    //   if (!nodes.has(linkDevice.clientId)) {
-    //     nodes.set(linkDevice.clientId, new Client({ id: linkDevice.clientId }));
-    //   }
-
-    //   if (!nodes.has(linkDevice.deviceId)) {
-    //     nodes.set(linkDevice.deviceId, new Device({ id: linkDevice.deviceId }));
-    //   }
-
-    //   //
-
-    //   const link1: Link = new Link({
-    //     source: client.id,
-    //     target: linkDevice.deviceId,
-    //   });
-
-    //   const link2: Link = new Link({
-    //     source: linkDevice.deviceId,
-    //     target: client.id,
-    //   });
-
-    //   const link3: Link = new Link({
-    //     source: linkDevice.clientId,
-    //     target: linkDevice.deviceId,
-    //   });
-
-    //   const link4: Link = new Link({
-    //     source: linkDevice.deviceId,
-    //     target: linkDevice.clientId,
-    //   });
-
-    //   if (!edges.has(link1.id) && !edges.has(link2.id)) {
-    //     edges.set(link1.id, link1);
-    //   }
-
-    //   if (!edges.has(link3.id) && !edges.has(link4.id)) {
-    //     edges.set(link3.id, link3);
-    //   }
-    // }
-
-    // for (const linkWallet of client.linkWallets) {
-    //   //
-
-    //   if (!nodes.has(linkWallet.clientId)) {
-    //     nodes.set(linkWallet.clientId, new Client({ id: linkWallet.clientId }));
-    //   }
-
-    //   if (!nodes.has(linkWallet.walletId)) {
-    //     nodes.set(linkWallet.walletId, new Wallet({ id: linkWallet.walletId }));
-    //   }
-
-    //   //
-
-    //   const link1: Link = new Link({
-    //     source: client.id,
-    //     target: linkWallet.walletId,
-    //   });
-
-    //   const link2: Link = new Link({
-    //     source: linkWallet.walletId,
-    //     target: client.id,
-    //   });
-
-    //   const link3: Link = new Link({
-    //     source: linkWallet.clientId,
-    //     target: linkWallet.walletId,
-    //   });
-
-    //   const link4: Link = new Link({
-    //     source: linkWallet.walletId,
-    //     target: linkWallet.clientId,
-    //   });
-
-    //   if (!edges.has(link1.id) && !edges.has(link2.id)) {
-    //     edges.set(link1.id, link1);
-    //   }
-
-    //   if (!edges.has(link3.id) && !edges.has(link4.id)) {
-    //     edges.set(link3.id, link3);
-    //   }
-    // }
   }
 
   for (const edge of edges.values()) elements.edges.push(edge.build());

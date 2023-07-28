@@ -23,7 +23,7 @@ export abstract class Entity {
   };
 
   protected static readonly shrink = (line: string): string => {
-    return line.length > 16
+    return line.length > 9
       ? line.substring(0, 4) + Emoji.ELLIPSIS + line.substring(line.length - 4)
       : line;
   };

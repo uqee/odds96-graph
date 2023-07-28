@@ -100,7 +100,8 @@ cytoscape({
       },
     },
     {
-      selector: 'node[type="UNKNOWN"]',
+      selector:
+        'node[type="ACCOUNT"], node[type="DEVICE"], node[type="EMAIL"], node[type="NAME"], node[type="NODE"], node[type="PHONE"]',
       style: {
         'background-color': materialColors.cyan['100'],
         'border-color': materialColors.cyan['700'],

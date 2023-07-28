@@ -1,6 +1,7 @@
 import { NodeDefinition } from 'cytoscape';
-import { assertDefined } from './assertDefined';
 
+import { assertDefined } from './assertDefined';
+import { Emoji } from './Emoji';
 import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
@@ -29,9 +30,31 @@ export class Node extends Entity {
     let content: string = '';
 
     // header
-    content += Node.pad(this.id);
+
+    switch (this.type) {
+      case EntityType.ACCOUNT:
+        content += Emoji.WALLET;
+        break;
+      case EntityType.DEVICE:
+        content += Emoji.DEVICE;
+        break;
+      case EntityType.EMAIL:
+        content += Emoji.MAIL;
+        break;
+      case EntityType.NAME:
+        content += Emoji.FACE;
+        break;
+      case EntityType.PHONE:
+        content += Emoji.PHONE;
+        break;
+      default:
+        break;
+    }
+
+    content += Node.pad(Node.shrink(this.id));
 
     // footer
+
     if (this.input.text !== undefined) {
       content += `\n${Node.line}`;
       content += this.input.text;

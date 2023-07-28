@@ -3,6 +3,55 @@ import { ClientInput } from './src';
 export const clientInputs: ClientInput[] = [
   {
     redash_fraudControl: `
+    `,
+    redash_fraudControl_account: `
+    223861
+    binnyflex007@oksbi
+    payment_form
+    247956
+    3449000403011799
+    payment_form
+    223861
+    53140100003020
+    payment_form
+    347813
+    53140100003020
+    payment_form
+    223861
+    66250100006539
+    payment_form
+    `,
+    redash_fraudControl_device: `
+    247956
+    cc73d8e0-4e60-4d6e-b804-9164d1a5b59d
+    247956
+    dbaab258-b5f9-4078-a60b-46d5f4138a54
+    223861
+    d13f5698-de74-484f-9394-c368c1d16112
+    245481
+    62a78ae4-eca9-4cf2-820e-291151ab1b35
+    223861
+    cc063b14-2d87-4040-a6a6-68ea8ad40b37
+    247956
+    62a78ae4-eca9-4cf2-820e-291151ab1b35
+    245481
+    970b5505-d9ec-48da-8e18-5fbd8fa38f6f
+    347813
+    3b5beb2e-12bf-473d-af87-e8904a1c08fb
+    223861
+    26b2e4dc-8c13-4885-a40f-821d2eeb0933
+    `,
+    redash_fraudControl_email: `
+    223683
+    yashjajoria1198
+    kyc
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    223683
+    yashjajoria1198
+    payment_form
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    `,
+    redash_fraudControl_name: `
     10620
     yashpal
     kyc
@@ -27,7 +76,8 @@ export const clientInputs: ClientInput[] = [
     256835
     sandeepverma
     kyc
-
+    `,
+    redash_fraudControl_phone: `
     223683
     919988791198
     payment_form
@@ -35,50 +85,6 @@ export const clientInputs: ClientInput[] = [
     223683
     919988791198
     kyc
-    ["block_suspend_reasons:General:Multi_Accounting"]
-
-    247956
-    cc73d8e0-4e60-4d6e-b804-9164d1a5b59d
-    247956
-    dbaab258-b5f9-4078-a60b-46d5f4138a54
-    223861
-    d13f5698-de74-484f-9394-c368c1d16112
-    245481
-    62a78ae4-eca9-4cf2-820e-291151ab1b35
-    223861
-    cc063b14-2d87-4040-a6a6-68ea8ad40b37
-    247956
-    62a78ae4-eca9-4cf2-820e-291151ab1b35
-    245481
-    970b5505-d9ec-48da-8e18-5fbd8fa38f6f
-    347813
-    3b5beb2e-12bf-473d-af87-e8904a1c08fb
-    223861
-    26b2e4dc-8c13-4885-a40f-821d2eeb0933
-
-    223861
-    binnyflex007@oksbi
-    payment_form
-    247956
-    3449000403011799
-    payment_form
-    223861
-    53140100003020
-    payment_form
-    347813
-    53140100003020
-    payment_form
-    223861
-    66250100006539
-    payment_form
-
-    223683
-    yashjajoria1198
-    kyc
-    ["block_suspend_reasons:General:Multi_Accounting"]
-    223683
-    yashjajoria1198
-    payment_form
     ["block_suspend_reasons:General:Multi_Accounting"]
     `,
     retool_userInfo: `
