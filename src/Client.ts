@@ -14,6 +14,7 @@ export interface ClientInput extends NodeInput {
   redash_fraudControl_device?: string;
   redash_fraudControl_email?: string;
   redash_fraudControl_name?: string;
+  redash_fraudControl_password?: string;
   redash_fraudControl_phone?: string;
   retool_userInfo?: string;
 }
@@ -92,7 +93,7 @@ export class Client extends Node {
   }
 
   protected get content(): string {
-    const { email, id, login, name, phone, reg, status, tags } = this;
+    const { email, id, login, name, phone, reg, status, tags, verif } = this;
     let { deposits, ngr, withdrawals } = this;
     let content: string = '';
 
@@ -140,6 +141,10 @@ export class Client extends Node {
         for (const tag of tags) {
           body += `\n${Client.pad('tag')} | ${tag}`;
         }
+      }
+
+      if (isDefined(verif)) {
+        body += `\n${Client.pad('verif')} | ${verif}`;
       }
 
       if (isDefined(body)) {
@@ -197,7 +202,7 @@ export class Client extends Node {
   }
 
   public get links(): ClientLink[] {
-    const links: ClientLink[] = [
+    return [
       ...Client.getLinks(
         this.input.redash_fraudControl, //
         EntityType.NODE
@@ -220,11 +225,14 @@ export class Client extends Node {
         EntityType.NAME
       ),
       ...Client.getLinks(
+        this.input.redash_fraudControl_password,
+        EntityType.PASSWORD
+      ),
+      ...Client.getLinks(
         this.input.redash_fraudControl_phone,
         EntityType.PHONE
       ),
     ];
-    return links;
   }
 
   private get login(): string | undefined {
@@ -288,6 +296,13 @@ export class Client extends Node {
       this.input.retool_userInfo
     )?.map((match) => match[1]);
     return tags?.length !== 0 ? tags : undefined;
+  }
+
+  private get verif(): string | undefined {
+    return Client.match(
+      /\s*Verification status\s*([^\s]+)\n/g,
+      this.input.retool_userInfo
+    )?.[0]?.[1];
   }
 
   private get withdrawals(): number | undefined {

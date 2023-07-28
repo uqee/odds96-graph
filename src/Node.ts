@@ -48,6 +48,10 @@ export class Node extends Entity {
       case EntityType.NAME:
         content += Emoji.FACE;
         break;
+      case EntityType.PASSWORD:
+        content += Emoji.PASSWORD;
+        id = Node.shrink(id);
+        break;
       case EntityType.PHONE:
         content += Emoji.PHONE;
         id = Node.shrink(id);

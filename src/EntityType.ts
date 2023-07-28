@@ -6,5 +6,6 @@ export enum EntityType {
   EMAIL = 'EMAIL',
   NAME = 'NAME',
   NODE = 'NODE',
+  PASSWORD = 'PASSWORD',
   PHONE = 'PHONE',
 }
