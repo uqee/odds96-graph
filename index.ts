@@ -85,7 +85,8 @@ cytoscape({
       },
     },
     {
-      selector: 'node[type="CLIENT"][status="Suspended"]',
+      selector:
+        'node[type="CLIENT"][status="LightBlock"], node[type="CLIENT"][status="Suspended"]',
       style: {
         'background-color': materialColors.orange['100'],
         'border-color': materialColors.orange['700'],
@@ -93,7 +94,8 @@ cytoscape({
       },
     },
     {
-      selector: 'node[type="CLIENT"][status="Suspended"][root]',
+      selector:
+        'node[type="CLIENT"][status="LightBlock"][root], node[type="CLIENT"][status="Suspended"][root]',
       style: {
         'background-color': materialColors.orange['500'],
         color: materialColors.white,

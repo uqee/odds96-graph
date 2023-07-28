@@ -95,13 +95,13 @@ export const clientInputs: ClientInput[] = [
     Registration date(UTC)	13:22 01/01/23
     Promocode	null
     Country	IN
-    Status	Active
+    Status	LightBlock
     Social Login	✘
     IsTest	✘
     Is Trusted	✘
     Verification status	Done
     Auto withdrawal score	2.75
-    Auto withdrawal factors	regular_clients_same_name, sum_withdrawals_for_segments_low_ngr, excessive_fastbets_low_events, same_ip, phone_mismatch, regular_clients_same_phone, regular_clients_same_device, email_mismatch, regular_clients_same_account_front, same_withdrawal_acc, regular_clients_same_email, name_mismatch
+    Auto withdrawal factors	regular_clients_same_name, excessive_fastbets_low_events, same_ip, phone_mismatch, regular_clients_same_phone, regular_clients_same_device, email_mismatch, regular_clients_same_account_front, same_withdrawal_acc, regular_clients_same_email, name_mismatch, client_kyc_status
     Client suspend score	0.6
     Client suspend factors	same_ip, regular_clients_same_device
     Pay to affiliate score	1.0
@@ -147,20 +147,15 @@ export const clientInputs: ClientInput[] = [
     Fin Pnl USD	
     $583.44
     Bookmaker fee	0
-    NGR Total	-309271.48 INR
-    NGR Total USD	-$3,711.26
+    NGR Total	23934 INR
+    NGR Total USD	$287.21
     Main balance	
     Currency	INR
-    Balance	267851.48
-    Balance USD	$3,214.22
-    NGR_total	-309271.48
-    NGR_total_USD	-3711.26
+    Balance	446
+    Balance USD	$5.35
+    NGR_total	23934.00
+    NGR_total_USD	287.21    
     `,
     text: ``,
   },
-  // {
-  //   redash_fraudControl: ``,
-  //   retool_userInfo: ``,
-  //   text: ``,
-  // },
 ];
