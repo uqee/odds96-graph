@@ -80,6 +80,15 @@ export class Client extends Node {
     super(input);
   }
 
+  private get balance(): number | undefined {
+    return toNumber(
+      Client.match(
+        /\s*Balance USD\s*-?\$([^\s]+)\n/g,
+        this.input.retool_userInfo
+      )?.[0]?.[1]?.replace(',', '')
+    );
+  }
+
   public build(): NodeDefinition {
     return {
       data: {
@@ -94,7 +103,7 @@ export class Client extends Node {
 
   protected get content(): string {
     const { email, id, login, name, phone, reg, status, tags, verif } = this;
-    let { deposits, ngr, withdrawals } = this;
+    let { balance, deposits, ngr, withdrawals } = this;
     let content: string = '';
 
     // header
@@ -107,13 +116,19 @@ export class Client extends Node {
     {
       let body: string = '';
 
-      if (isDefined(deposits) || isDefined(ngr) || isDefined(withdrawals)) {
+      if (
+        isDefined(balance) ||
+        isDefined(deposits) ||
+        isDefined(ngr) ||
+        isDefined(withdrawals)
+      ) {
+        balance = balance ?? 0;
         deposits = Math.round(deposits ?? 0);
         ngr = Math.round(ngr ?? 0);
         withdrawals = Math.round(withdrawals ?? 0);
 
         body += `\n${Client.pad('$')}`;
-        body += ` | ${deposits - withdrawals - ngr}`;
+        body += ` | ${balance}`;
         body += ` = ↑${deposits} ↓${withdrawals} ${ngr > 0 ? '-' : '+'}${ngr}`;
       }
 
@@ -176,7 +191,7 @@ export class Client extends Node {
   private get deposits(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Deposits USD\s*\$([^\s]+)\n/g,
+        /\s*Deposits USD\s*-?\$([^\s]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -263,7 +278,7 @@ export class Client extends Node {
   private get ngr(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*NGR Total USD\s*\$([^\s]+)\n/g,
+        /\s*NGR Total USD\s*-?\$([^\s]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -308,7 +323,7 @@ export class Client extends Node {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Withdrawals USD\s*\$([^\s]+)\n/g,
+        /\s*Withdrawals USD\s*-?\$([^\s]+)\n/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
