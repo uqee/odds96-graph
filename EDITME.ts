@@ -3,198 +3,158 @@ import { ClientInput } from './src';
 export const clientInputs: ClientInput[] = [
   {
     redash_fraudControl: `
-    342035
-    kevinpatel
+    10620
+    yashpal
+    kyc
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    9000
+    yashpal
+    kyc
+    256835
+    sandeepverma
     payment_form
-
-    342035
-    917990278761
+    10121
+    yashpal
+    kyc
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    274668
+    sandeepverma
     payment_form
-    342035
-    917990278761
+    223683
+    yashpal
+    payment_form
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    256835
+    sandeepverma
     kyc
 
-    342035
-    e49a805d-256b-42ba-bba6-b4f7b69750ea
-    
-    342035
-    7990278761@paytm
+    223683
+    919988791198
+    payment_form
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    223683
+    919988791198
+    kyc
+    ["block_suspend_reasons:General:Multi_Accounting"]
+
+    247956
+    cc73d8e0-4e60-4d6e-b804-9164d1a5b59d
+    247956
+    dbaab258-b5f9-4078-a60b-46d5f4138a54
+    223861
+    d13f5698-de74-484f-9394-c368c1d16112
+    245481
+    62a78ae4-eca9-4cf2-820e-291151ab1b35
+    223861
+    cc063b14-2d87-4040-a6a6-68ea8ad40b37
+    247956
+    62a78ae4-eca9-4cf2-820e-291151ab1b35
+    245481
+    970b5505-d9ec-48da-8e18-5fbd8fa38f6f
+    347813
+    3b5beb2e-12bf-473d-af87-e8904a1c08fb
+    223861
+    26b2e4dc-8c13-4885-a40f-821d2eeb0933
+
+    223861
+    binnyflex007@oksbi
+    payment_form
+    247956
+    3449000403011799
+    payment_form
+    223861
+    53140100003020
+    payment_form
+    347813
+    53140100003020
+    payment_form
+    223861
+    66250100006539
     payment_form
 
-    342035
-    ce99372007fda5396ef8e60aa8def4252883b140d0fae29a6fc36743be4240e6e09267813b3e98924a383296cc21a4cc336a888709fea237a2fc372bc2ee6dad
-    payment_form
-    342035
-    ce99372007fda5396ef8e60aa8def4252883b140d0fae29a6fc36743be4240e6e09267813b3e98924a383296cc21a4cc336a888709fea237a2fc372bc2ee6dad
+    223683
+    yashjajoria1198
     kyc
+    ["block_suspend_reasons:General:Multi_Accounting"]
+    223683
+    yashjajoria1198
+    payment_form
+    ["block_suspend_reasons:General:Multi_Accounting"]
     `,
     retool_userInfo: `
     MAIN INFO
-    Client ID	349770
-    User ID	3935438329
-    Login	kp506464@gmail.com
-    Registration date(UTC)	15:37 24/07/23
-    Promocode	ASWALIND
-    Country	IN
-    Status	Active
-    Social Login	✘
-    IsTest	✘
-    Is Trusted	✘
-    Verification status	InProgress
-    Auto withdrawal score	1.2
-    Auto withdrawal factors	regular_clients_same_name, regular_clients_same_phone, regular_clients_same_device, regular_clients_same_account_front, regular_clients_same_password
-    Client suspend score	0.5
-    Client suspend factors	regular_clients_same_device
-    Pay to affiliate score	1.0
-    Pay to affiliate factors	no_pay
-    Loyalty Level	Starter
-    Segment Group	Starter
-    MTSProfile	
-    User 349770 MTS Profile
-    CasinoLoyaltyProfile	
-    User 549021081
-    Firstname	null
-    Lastname	null
-    Birthdate	null
-    Contact phone	917990278761
-    Phone Verified	✔
-    Contact email	kp506464@gmail.com
-    Email Verified	✔
-    Sumsub Profile	
-    User 64be9e100830242ba291a187
-    STATISTICS
-    Currency	INR
-    Total stakes (sports)	50 INR
-    Total stakes USD (sports)	$0.60
-    No. of bets (sports)	1
-    Unsettled sports stakes	50 INR
-    Unsettled sports stakes USD	$0.60
-    Sportsbook GGR	
-    50 INR
-    Sportsbook GGR USD	
-    $0.6
-    Casino GGR	
-    1499.28 INR
-    Casino GGR USD	
-    $17.99
-    Deposits	1500 INR
-    Deposits USD	$18.00
-    No. of deposits	1
-    Withdrawals	0 INR
-    Withdrawals USD	$0.00
-    No. of withdrawals	0
-    Fin Pnl	
-    1500 INR
-    Fin Pnl USD	
-    $18
-    Bookmaker fee	0
-    NGR Total	1549.28 INR
-    NGR Total USD	$18.59
-    Main balance	
-    Currency	INR
-    Balance	0.72
-    Balance USD	$0.01
-    NGR_total	1549.28
-    NGR_total_USD	18.59
-    `,
-    text: ``,
-  },
-  {
-    redash_fraudControl: `
-    349770
-    kevinpatel
-    payment_form
-    
-    349770
-    917990278761
-    kyc
-    349770
-    917990278761
-    payment_form
-
-    349770
-    e49a805d-256b-42ba-bba6-b4f7b69750ea
-
-    349770
-    7990278761@paytm
-    payment_form
-
-    349770
-    ce99372007fda5396ef8e60aa8def4252883b140d0fae29a6fc36743be4240e6e09267813b3e98924a383296cc21a4cc336a888709fea237a2fc372bc2ee6dad
-    kyc
-    349770
-    ce99372007fda5396ef8e60aa8def4252883b140d0fae29a6fc36743be4240e6e09267813b3e98924a383296cc21a4cc336a888709fea237a2fc372bc2ee6dad
-    payment_form
-    `,
-    retool_userInfo: `
-    MAIN INFO
-    Client ID	342035
-    User ID	4794441106
-    Login	917990278761
-    Registration date(UTC)	01:47 20/07/23
-    Promocode	ASWALIND
+    Client ID	223695
+    User ID	1672579348
+    Login	919988791198
+    Registration date(UTC)	13:22 01/01/23
+    Promocode	null
     Country	IN
     Status	Active
     Social Login	✘
     IsTest	✘
     Is Trusted	✘
     Verification status	Done
-    Auto withdrawal score	1.2
-    Auto withdrawal factors	regular_clients_same_name, regular_clients_same_phone, regular_clients_same_device, regular_clients_same_account_front, regular_clients_same_password, name_mismatch
-    Client suspend score	0.5
-    Client suspend factors	regular_clients_same_device
+    Auto withdrawal score	2.75
+    Auto withdrawal factors	regular_clients_same_name, sum_withdrawals_for_segments_low_ngr, excessive_fastbets_low_events, same_ip, phone_mismatch, regular_clients_same_phone, regular_clients_same_device, email_mismatch, regular_clients_same_account_front, same_withdrawal_acc, regular_clients_same_email, name_mismatch
+    Client suspend score	0.6
+    Client suspend factors	same_ip, regular_clients_same_device
     Pay to affiliate score	1.0
     Pay to affiliate factors	no_pay
-    Loyalty Level	Risk-taker
-    Segment Group	Challenger_low_NGR
+    Loyalty Level	Maestro I
+    Segment Group	Premium_low_NGR
     MTSProfile	
-    User 342035 MTS Profile
+    User 223695 MTS Profile
     CasinoLoyaltyProfile	
-    User 547996957
-    Firstname	Kevin M Patel
+    User 490669705
+    Firstname	Yashpal
     Lastname	null
-    Birthdate	21/09/00
-    Contact phone	917990278761
+    Birthdate	01/01/97
+    Contact phone	919988791198
     Phone Verified	✔
-    Contact email	kevinpatel2122@gmail.com
+    Contact email	Yashjajoria1198@gmail.com
     Email Verified	✔
     Sumsub Profile	
-    User 64b896c4359b4002c83b77f3
+    User 63e7ddd0ad7e13331a190172
     STATISTICS
     Currency	INR
-    Total stakes (sports)	50 INR
-    Total stakes USD (sports)	$0.60
-    No. of bets (sports)	1
+    Total stakes (sports)	2243.25 INR
+    Total stakes USD (sports)	$26.92
+    No. of bets (sports)	21
     Unsettled sports stakes	0 INR
     Unsettled sports stakes USD	$0.00
     Sportsbook GGR	
-    -27.5 INR
+    805.79 INR
     Sportsbook GGR USD	
-    $-0.33
+    $9.67
     Casino GGR	
-    -1375.04 INR
+    -309415.87 INR
     Casino GGR USD	
-    $-16.5
-    Deposits	6000 INR
-    Deposits USD	$72.00
-    No. of deposits	6
-    Withdrawals	8490 INR
-    Withdrawals USD	$101.88
-    No. of withdrawals	7
+    $-3712.99
+    Deposits	144180 INR
+    Deposits USD	$1,730.16
+    No. of deposits	136
+    Withdrawals	95560 INR
+    Withdrawals USD	$1,146.72
+    No. of withdrawals	33
     Fin Pnl	
-    -2490 INR
+    48620 INR
     Fin Pnl USD	
-    $-29.88
+    $583.44
     Bookmaker fee	0
-    NGR Total	-2596.64 INR
-    NGR Total USD	-$31.16
+    NGR Total	-309271.48 INR
+    NGR Total USD	-$3,711.26
     Main balance	
     Currency	INR
-    Balance	79.14
-    Balance USD	$0.95
-    NGR_total	-2596.64
-    NGR_total_USD	-31.16
+    Balance	267851.48
+    Balance USD	$3,214.22
+    NGR_total	-309271.48
+    NGR_total_USD	-3711.26
     `,
     text: ``,
   },
+  // {
+  //   redash_fraudControl: ``,
+  //   retool_userInfo: ``,
+  //   text: ``,
+  // },
 ];

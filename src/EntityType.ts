@@ -1,7 +1,10 @@
 export enum EntityType {
+  ACCOUNT = 'ACCOUNT',
   CLIENT = 'CLIENT',
   DEVICE = 'DEVICE',
-  LINK = 'LINK',
-  UNKNOWN = 'UNKNOWN',
-  WALLET = 'WALLET',
+  EDGE = 'EDGE',
+  EMAIL = 'EMAIL',
+  NAME = 'NAME',
+  NODE = 'NODE',
+  PHONE = 'PHONE',
 }

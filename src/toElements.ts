@@ -1,10 +1,9 @@
 import { CytoscapeOptions } from 'cytoscape';
 
 import { Client, ClientInput } from './Client';
-import { Entity } from './Entity';
+import { Edge } from './Edge';
 import { EntityId } from './EntityId';
-import { Link } from './Link';
-import { Unknown } from './Unknown';
+import { Node } from './Node';
 
 export const toElements = (
   clientInputs: ClientInput[]
@@ -14,8 +13,8 @@ export const toElements = (
     edges: [],
   };
 
-  const edges: Map<EntityId, Link> = new Map();
-  const nodes: Map<EntityId, Entity> = new Map();
+  const edges: Map<EntityId, Edge> = new Map();
+  const nodes: Map<EntityId, Node> = new Map();
 
   for (let i = 0; i < clientInputs.length; i++) {
     const clientInput = clientInputs[i];
@@ -36,7 +35,10 @@ export const toElements = (
       if (link.parameter === undefined) continue;
 
       if (!nodes.has(link.parameter)) {
-        nodes.set(link.parameter, new Unknown({ id: link.parameter }));
+        nodes.set(
+          link.parameter,
+          new Default({ id: link.parameter, type: link.type })
+        );
       }
 
       //

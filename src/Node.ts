@@ -1,15 +1,17 @@
 import { NodeDefinition } from 'cytoscape';
+import { assertDefined } from './assertDefined';
 
 import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
 
-export interface UnknownInput extends EntityInput {
-  id: Entity['id'];
+export interface NodeInput extends EntityInput {
+  id?: Entity['id'];
+  type?: EntityType;
 }
 
-export class Unknown extends Entity {
-  public constructor(protected input: UnknownInput) {
+export class Node extends Entity {
+  public constructor(protected input: NodeInput) {
     super();
   }
 
@@ -18,7 +20,7 @@ export class Unknown extends Entity {
       data: {
         content: this.content,
         id: this.id,
-        type: EntityType.UNKNOWN,
+        type: this.type,
       },
     };
   }
@@ -27,11 +29,11 @@ export class Unknown extends Entity {
     let content: string = '';
 
     // header
-    content += Unknown.PAD(this.id);
+    content += Node.pad(this.id);
 
     // footer
     if (this.input.text !== undefined) {
-      content += `\n${Unknown.LINE}`;
+      content += `\n${Node.line}`;
       content += this.input.text;
     }
 
@@ -39,6 +41,11 @@ export class Unknown extends Entity {
   }
 
   public get id(): EntityId {
+    assertDefined(this.input.id);
     return this.input.id;
+  }
+
+  public get type(): EntityType {
+    return this.input.type ?? EntityType.NODE;
   }
 }

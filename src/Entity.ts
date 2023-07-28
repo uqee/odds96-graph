@@ -1,5 +1,6 @@
 import { NodeDefinition } from 'cytoscape';
 
+import { Emoji } from './Emoji';
 import { EntityId } from './EntityId';
 
 export interface EntityInput {
@@ -8,31 +9,23 @@ export interface EntityInput {
 }
 
 export abstract class Entity {
-  private static LENGTH_MAX: number = 36;
-  private static LENGTH_MIN: number = 7;
+  protected static readonly line: string = '-'.repeat(32);
 
-  protected static readonly LINE: string = '-'.repeat(Entity.LENGTH_MAX);
-
-  protected static MATCH = (
+  protected static match = (
     regExp: RegExp,
     text: string | undefined
   ): RegExpMatchArray[] | undefined => {
     return text !== undefined ? Array.from(text.matchAll(regExp)) : undefined;
   };
 
-  protected static readonly PAD = (line: string): string => {
-    if (line.length < Entity.LENGTH_MIN) {
-      line = line.padEnd(Entity.LENGTH_MIN, ' ');
-    }
+  protected static readonly pad = (line: string): string => {
+    return line.padEnd(7, ' ');
+  };
 
-    if (line.length > Entity.LENGTH_MAX) {
-      line =
-        line.substring(0, Entity.LENGTH_MIN) +
-        '...' +
-        line.substring(line.length - Entity.LENGTH_MIN);
-    }
-
-    return line;
+  protected static readonly shrink = (line: string): string => {
+    return line.length > 16
+      ? line.substring(0, 4) + Emoji.ELLIPSIS + line.substring(line.length - 4)
+      : line;
   };
 
   //

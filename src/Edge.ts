@@ -4,14 +4,13 @@ import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
 
-export interface LinkInput extends EntityInput {
+export interface EdgeInput extends EntityInput {
   source: EntityId;
   target: EntityId;
-  text?: string;
 }
 
-export class Link extends Entity {
-  public constructor(protected input: LinkInput) {
+export class Edge extends Entity {
+  public constructor(protected input: EdgeInput) {
     super();
   }
 
@@ -22,7 +21,7 @@ export class Link extends Entity {
         id: this.id,
         source: this.input.source,
         target: this.input.target,
-        type: EntityType.LINK,
+        type: EntityType.EDGE,
       },
     };
   }

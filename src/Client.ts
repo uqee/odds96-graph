@@ -1,16 +1,20 @@
 import { NodeDefinition } from 'cytoscape';
 
 import { assertDefined } from './assertDefined';
-import { Entity, EntityInput } from './Entity';
 import { EntityId } from './EntityId';
 import { EntityType } from './EntityType';
 import { isDefined } from './isDefined';
+import { Node, NodeInput } from './Node';
 import { toDefined } from './toDefined';
 import { toNumber } from './toNumber';
 
-export interface ClientInput extends EntityInput {
-  id?: Entity['id'];
+export interface ClientInput extends NodeInput {
   redash_fraudControl?: string;
+  redash_fraudControl_account?: string;
+  redash_fraudControl_device?: string;
+  redash_fraudControl_email?: string;
+  redash_fraudControl_name?: string;
+  redash_fraudControl_phone?: string;
   retool_userInfo?: string;
 }
 
@@ -19,11 +23,60 @@ interface ClientLink {
   parameter?: string;
   section?: string;
   tags?: string;
+  type?: EntityType;
 }
 
-export class Client extends Entity {
+export class Client extends Node {
+  private static getLinks(
+    text: string | undefined,
+    type: EntityType
+  ): ClientLink[] {
+    const links: ClientLink[] = [];
+
+    const lines: string[] =
+      text
+        ?.split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line !== '') ?? [];
+
+    let icell: number = 0;
+    let link: ClientLink | undefined;
+
+    for (let irow = 0; irow < lines.length; irow++) {
+      const line: string = lines[irow];
+
+      if (line.match(/^\d{1,7}$/)) icell = 0;
+      else icell++;
+
+      switch (icell) {
+        case 0:
+          if (link !== undefined) links.push(link);
+          link = { clientId: line, type };
+          break;
+        case 1:
+          assertDefined(link);
+          link.parameter = line;
+          break;
+        case 2:
+          assertDefined(link);
+          link.section = line;
+          break;
+        case 3:
+          assertDefined(link);
+          link.tags = line;
+          break;
+        default:
+          throw new Error(`Unknown icell = ${icell}`);
+      }
+    }
+
+    if (link !== undefined) links.push(link);
+
+    return links;
+  }
+
   public constructor(protected input: ClientInput) {
-    super();
+    super(input);
   }
 
   public build(): NodeDefinition {
@@ -144,47 +197,33 @@ export class Client extends Entity {
   }
 
   public get links(): ClientLink[] {
-    const links: ClientLink[] = [];
+    const links: ClientLink[] = [
+      ...Client.getLinks(
+        this.input.redash_fraudControl_account,
+        EntityType.ACCOUNT
+      ),
+      ...Client.getLinks(
+        this.input.redash_fraudControl_device,
+        EntityType.DEVICE
+      ),
+      ...Client.getLinks(
+        this.input.redash_fraudControl_email,
+        EntityType.EMAIL
+      ),
+      ...Client.getLinks(
+        this.input.redash_fraudControl_name, //
+        EntityType.NAME
+      ),
+      ...Client.getLinks(
+        this.input.redash_fraudControl_phone,
+        EntityType.PHONE
+      ),
 
-    const lines: string[] =
-      this.input.redash_fraudControl
-        ?.split('\n')
-        .map((line) => line.trim())
-        .filter((line) => line !== '') ?? [];
-
-    let icell: number = 0;
-    let link: ClientLink | undefined;
-
-    for (let irow = 0; irow < lines.length; irow++) {
-      const line: string = lines[irow];
-
-      if (line.match(/^\d{1,7}$/)) icell = 0;
-      else icell++;
-
-      switch (icell) {
-        case 0:
-          if (link !== undefined) links.push(link);
-          link = { clientId: line };
-          break;
-        case 1:
-          assertDefined(link);
-          link.parameter = line;
-          break;
-        case 2:
-          assertDefined(link);
-          link.section = line;
-          break;
-        case 3:
-          assertDefined(link);
-          link.tags = line;
-          break;
-        default:
-          throw new Error(`Unknown icell = ${icell}`);
-      }
-    }
-
-    if (link !== undefined) links.push(link);
-
+      ...Client.getLinks(
+        this.input.redash_fraudControl, //
+        EntityType.NODE
+      ),
+    ];
     return links;
   }
 
