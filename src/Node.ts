@@ -31,12 +31,16 @@ export class Node extends Entity {
 
     // header
 
+    let id: string = this.id;
+
     switch (this.type) {
       case EntityType.ACCOUNT:
         content += Emoji.WALLET;
+        id = Node.shrink(id);
         break;
       case EntityType.DEVICE:
         content += Emoji.DEVICE;
+        id = Node.shrink(id);
         break;
       case EntityType.EMAIL:
         content += Emoji.MAIL;
@@ -46,12 +50,13 @@ export class Node extends Entity {
         break;
       case EntityType.PHONE:
         content += Emoji.PHONE;
+        id = Node.shrink(id);
         break;
       default:
         break;
     }
 
-    content += Node.pad(Node.shrink(this.id));
+    content += Node.pad(id);
 
     // footer
 
