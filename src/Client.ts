@@ -294,7 +294,7 @@ export class Client extends Node {
 
   private get reg(): string | undefined {
     return Client.match(
-      /\s*Registration date\(UTC\)\s*([^\s]+)\n/g,
+      /\s*Registration date\(UTC\)\s*([^\s]{5} [^\s]{8})\n/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
