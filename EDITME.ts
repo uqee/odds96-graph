@@ -706,4 +706,89 @@ export const clientInputs: ClientInput[] = [
     text: `
     `,
   },
+  {
+    redash_fraudControl: `
+    `,
+    redash_fraudControl_account: `
+    `,
+    redash_fraudControl_device: `
+    `,
+    redash_fraudControl_email: `
+    `,
+    redash_fraudControl_name: `
+    `,
+    redash_fraudControl_password: `
+    `,
+    redash_fraudControl_phone: `
+    `,
+    retool_userInfo: `
+    MAIN INFO
+    Client ID	207802
+    User ID	1667904963
+    Login	sonu.choudhary861@gmail.com
+    Registration date(UTC)	10:56 08/11/22
+    Promocode	null
+    Country	IN
+    Status	Active
+    Social Login	✔
+    IsTest	✘
+    Is Trusted	✘
+    Verification status	Available
+    Auto withdrawal score	0.5
+    Client suspend score	0.5
+    Pay to affiliate score	null
+    Pay to affiliate factors	null
+    Loyalty Level	Novice
+    Segment Group	New
+    MTSProfile	
+    User 207802 MTS Profile
+    CasinoLoyaltyProfile	
+    User 479971608
+    Firstname	null
+    Lastname	null
+    Birthdate	null
+    Contact phone	null
+    Phone Verified	✘
+    Contact email	sonu.choudhary861@gmail.com
+    Email Verified	✔
+    Sumsub Profile	
+    User
+    STATISTICS
+    Currency	INR
+    Total stakes (sports)	0 INR
+    Total stakes USD (sports)	$0.00
+    No. of bets (sports)	0
+    Unsettled sports stakes	0 INR
+    Unsettled sports stakes USD	$0.00
+    Sportsbook GGR	
+    0 INR
+    Sportsbook GGR USD	
+    $0
+    Casino GGR	
+    0 INR
+    Casino GGR USD	
+    $0
+    Deposits	0 INR
+    Deposits USD	$0.00
+    No. of deposits	0
+    Withdrawals	0 INR
+    Withdrawals USD	$0.00
+    No. of withdrawals	0
+    Fin Pnl	
+    0 INR
+    Fin Pnl USD	
+    $0
+    Bookmaker fee	0
+    NGR Total	-40 INR
+    NGR Total USD	-$0.48
+    Main balance	
+    Currency	INR
+    Balance	0
+    Balance USD	$0.00
+    NGR_total	-40.00
+    NGR_total_USD	-0.48
+    `,
+    text: `
+    `,
+  },
 ];

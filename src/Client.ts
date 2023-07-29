@@ -102,7 +102,8 @@ export class Client extends Node {
   }
 
   protected get content(): string {
-    const { email, id, login, name, phone, reg, status, tags, verif } = this;
+    const { email, id, login, name, phone, reg, status, tags, text, verif } =
+      this;
     let { balance, deposits, ngr, withdrawals } = this;
     let content: string = '';
 
@@ -173,8 +174,8 @@ export class Client extends Node {
     {
       let footer: string = '';
 
-      if (isDefined(this.input.text)) {
-        footer += this.input.text;
+      if (isDefined(text)) {
+        footer += text;
       }
 
       if (isDefined(footer)) {
@@ -311,6 +312,10 @@ export class Client extends Node {
       this.input.retool_userInfo
     )?.map((match) => match[1]);
     return tags?.length !== 0 ? tags : undefined;
+  }
+
+  private get text(): string | undefined {
+    return this.input.text?.trim();
   }
 
   private get verif(): string | undefined {
