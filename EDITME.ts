@@ -3,298 +3,91 @@ import { ClientInput } from './src';
 export const clientInputs: ClientInput[] = [
   {
     redash_fraudControl: ``,
-    redash_fraudControl_account: `320357
-    8669107398@paytm
-    payment_form
-    318511
-    8669107398@paytm
-    payment_form`,
-    redash_fraudControl_device: `320357
-    aae02afb-8de2-42e3-9ef0-be7e9da2d403
-    320357
-    c6340569-e9f0-4a49-9f33-7ffc02b4894a
-    318511
-    c6340569-e9f0-4a49-9f33-7ffc02b4894a`,
-    redash_fraudControl_email: `318511
-    kolisuraj349
-    payment_form
-    318511
-    kolisuraj349
-    kyc
-    320357
-    kolisuraj349
-    payment_form
-    320357
-    kolisuraj349
-    kyc`,
-    redash_fraudControl_name: ``,
-    redash_fraudControl_password: ``,
-    redash_fraudControl_phone: ``,
-    retool_userInfo: `MAIN INFO
-    Client ID	342331
-    User ID	6138579255
-    Login	917709442269
-    Registration date(UTC)	06:24 20/07/23
-    Promocode	null
-    Country	IN
-    Status	Suspended
-    Social Login	✘
-    IsTest	✘
-    Is Trusted	✘
-    Verification status	InProgress
-    Auto withdrawal score	1.5
-    Auto withdrawal factors	regular_clients_same_name, regular_clients_same_device, regular_clients_same_account_front, regular_clients_same_email, name_mismatch, client_kyc_status
-    Client suspend score	1.5
-    Client suspend factors	kyc_client_suspension, regular_clients_same_device
-    Pay to affiliate score	0.0
-    Pay to affiliate factors	
-    Loyalty Level	Starter
-    Segment Group	New
-    MTSProfile	
-    User 342331 MTS Profile
-    CasinoLoyaltyProfile	
-    User 548034325
-    Firstname	Suraj Balaji Koli
-    Lastname	null
-    Birthdate	01/01/01
-    Contact phone	917709442269
-    Phone Verified	✔
-    Contact email	kolisuraj349@gmail.com
-    Email Verified	✔
-    Sumsub Profile	
-    User 64b8deae042b214f37ce77ef
-    STATISTICS
-    Currency	INR
-    Total stakes (sports)	0 INR
-    Total stakes USD (sports)	$0.00
-    No. of bets (sports)	0
-    Unsettled sports stakes	0 INR
-    Unsettled sports stakes USD	$0.00
-    Sportsbook GGR	
-    0 INR
-    Sportsbook GGR USD	
-    $0
-    Casino GGR	
-    -182.89 INR
-    Casino GGR USD	
-    $-2.19
-    Deposits	500 INR
-    Deposits USD	$6.00
-    No. of deposits	1
-    Withdrawals	0 INR
-    Withdrawals USD	$0.00
-    No. of withdrawals	0
-    Fin Pnl	
-    500 INR
-    Fin Pnl USD	
-    $6
-    Bookmaker fee	0
-    NGR Total	-430.39 INR
-    NGR Total USD	-$5.16
-    Main balance	
-    Currency	INR
-    Balance	930.39
-    Balance USD	$11.16
-    NGR_total	-430.39
-    NGR_total_USD	-5.16
-    `,
-    text: ``,
-  },
-  {
-    redash_fraudControl: ``,
     redash_fraudControl_account: ``,
-    redash_fraudControl_device: ``,
-    redash_fraudControl_email: ``,
-    redash_fraudControl_name: ``,
-    redash_fraudControl_password: ``,
-    redash_fraudControl_phone: `303868
-    918669107398
-    kyc
-    303868
-    918669107398
-    payment_form
-    320357
-    918669107398
-    payment_form
-    320357
-    918669107398
+    redash_fraudControl_device: `325334
+    217703c8-5ea9-4308-a14a-539503129fd4
+    342371
+    0afa873c-a1bf-4c4d-8430-12ab6a20d8bf
+    ["block_suspend_reasons:General:Customer_Request"]`,
+    redash_fraudControl_email: `325334
+    ra5933710
     kyc`,
+    redash_fraudControl_name: ``,
+    redash_fraudControl_password: `342371
+    bdb8e50b59f2ec4333501c43c5a99a03f707eac2442fb400f3f4a06d2c70f28b20ac659442a112703953db1db2b644e88e7bbbf18c536d013937e6803df2d66b
+    kyc
+    ["block_suspend_reasons:General:Customer_Request"]`,
+    redash_fraudControl_phone: `342371
+    919365207877
+    kyc
+    ["block_suspend_reasons:General:Customer_Request"]`,
     retool_userInfo: `MAIN INFO
-    Client ID	318511
-    User ID	8791441404
-    Login	918669107398
-    Registration date(UTC)	09:10 27/06/23
-    Promocode	null
+    Client ID	337101
+    User ID	6308936019
+    Login	919387809460
+    Registration date(UTC)	03:40 16/07/23
+    Promocode	
     Country	IN
     Status	Active
     Social Login	✘
     IsTest	✘
     Is Trusted	✘
-    Verification status	InProgress
-    Auto withdrawal score	0.5
-    Auto withdrawal factors	regular_clients_same_name, regular_clients_same_phone
-    Client suspend score	0.0
-    Pay to affiliate score	0.0
-    Pay to affiliate factors	
-    Loyalty Level	Starter
-    Segment Group	Starter
-    MTSProfile	
-    User 318511 MTS Profile
-    CasinoLoyaltyProfile	
-    User 542681129
-    Firstname	null
-    Lastname	null
-    Birthdate	null
-    Contact phone	918669107398
-    Phone Verified	✔
-    Contact email	kolisuraj349@gmail.com
-    Email Verified	✔
-    Sumsub Profile	
-    User 649c128f7eb68001d770e229
-    STATISTICS
-    Currency	INR
-    Total stakes (sports)	0 INR
-    Total stakes USD (sports)	$0.00
-    No. of bets (sports)	0
-    Unsettled sports stakes	0 INR
-    Unsettled sports stakes USD	$0.00
-    Sportsbook GGR	
-    0 INR
-    Sportsbook GGR USD	
-    $0
-    Casino GGR	
-    498.57 INR
-    Casino GGR USD	
-    $5.98
-    Deposits	500 INR
-    Deposits USD	$6.00
-    No. of deposits	1
-    Withdrawals	0 INR
-    Withdrawals USD	$0.00
-    No. of withdrawals	0
-    Fin Pnl	
-    500 INR
-    Fin Pnl USD	
-    $6
-    Bookmaker fee	0
-    NGR Total	458.57 INR
-    NGR Total USD	$5.50
-    Main balance	
-    Currency	INR
-    Balance	1.43
-    Balance USD	$0.02
-    NGR_total	458.57
-    NGR_total_USD	5.50
-    `,
-    text: ``,
-  },
-  {
-    redash_fraudControl: ``,
-    redash_fraudControl_account: `342331
-    8669107398@paytm
-    payment_form
-    318511
-    8669107398@paytm
-    payment_form`,
-    redash_fraudControl_device: `342331
-    c6340569-e9f0-4a49-9f33-7ffc02b4894a
-    318511
-    c6340569-e9f0-4a49-9f33-7ffc02b4894a
-    342331
-    aae02afb-8de2-42e3-9ef0-be7e9da2d403`,
-    redash_fraudControl_email: `318511
-    kolisuraj349
-    payment_form
-    342331
-    kolisuraj349
-    payment_form
-    318511
-    kolisuraj349
-    kyc
-    342331
-    kolisuraj349
-    kyc`,
-    redash_fraudControl_name: ``,
-    redash_fraudControl_password: ``,
-    redash_fraudControl_phone: `318511
-    918669107398
-    payment_form
-    318511
-    918669107398
-    kyc
-    303868
-    918669107398
-    kyc
-    303868
-    918669107398
-    payment_form`,
-    retool_userInfo: `MAIN INFO
-    Client ID	320357
-    User ID	2300153085
-    Login	kolisuraj349@gmail.com
-    Registration date(UTC)	13:43 29/06/23
-    Promocode	null
-    Country	IN
-    Status	Active
-    Social Login	✔
-    IsTest	✘
-    Is Trusted	✘
-    Verification status	InProgress
-    Auto withdrawal score	1.5
-    Auto withdrawal factors	regular_clients_same_name, regular_clients_same_phone, regular_clients_same_device, regular_clients_same_account_front, regular_clients_same_email
+    Verification status	Failed
+    Auto withdrawal score	1.85
+    Auto withdrawal factors	regular_clients_same_name, excessive_fastbets_low_events, phone_mismatch, regular_clients_same_phone, regular_clients_same_device, regular_clients_same_email, regular_clients_same_password, name_mismatch
     Client suspend score	0.5
     Client suspend factors	regular_clients_same_device
-    Pay to affiliate score	0.0
-    Pay to affiliate factors	
-    Loyalty Level	Starter
-    Segment Group	Starter
+    Pay to affiliate score	1.0
+    Pay to affiliate factors	no_pay
+    Loyalty Level	Explorer
+    Segment Group	Challenger
     MTSProfile	
-    User 320357 MTS Profile
+    User 337101 MTS Profile
     CasinoLoyaltyProfile	
-    User 543103049
-    Firstname	null
+    User 547038553
+    Firstname	Rehena Begum
     Lastname	null
     Birthdate	null
-    Contact phone	918669107398
+    Contact phone	919387809460
     Phone Verified	✔
-    Contact email	kolisuraj349@gmail.com
+    Contact email	ra5933710@gmail.com
     Email Verified	✔
     Sumsub Profile	
-    User 64b8d114042b214f37cba93f
+    User 64ba861e0a12ee6862a4895a
     STATISTICS
     Currency	INR
-    Total stakes (sports)	0 INR
-    Total stakes USD (sports)	$0.00
-    No. of bets (sports)	0
-    Unsettled sports stakes	0 INR
-    Unsettled sports stakes USD	$0.00
+    Total stakes (sports)	11463.57 INR
+    Total stakes USD (sports)	$137.56
+    No. of bets (sports)	48
+    Unsettled sports stakes	400 INR
+    Unsettled sports stakes USD	$4.80
     Sportsbook GGR	
-    0 INR
+    599.59 INR
     Sportsbook GGR USD	
-    $0
+    $7.2
     Casino GGR	
-    999.25 INR
+    0 INR
     Casino GGR USD	
-    $11.99
-    Deposits	1000 INR
-    Deposits USD	$12.00
+    $0
+    Deposits	1200 INR
+    Deposits USD	$14.40
     No. of deposits	2
     Withdrawals	0 INR
     Withdrawals USD	$0.00
     No. of withdrawals	0
     Fin Pnl	
-    1000 INR
+    1200 INR
     Fin Pnl USD	
-    $12
+    $14.4
     Bookmaker fee	0
-    NGR Total	959.25 INR
-    NGR Total USD	$11.51
+    NGR Total	438.59 INR
+    NGR Total USD	$5.26
     Main balance	
     Currency	INR
-    Balance	0.75
-    Balance USD	$0.01
-    NGR_total	959.25
-    NGR_total_USD	11.51
+    Balance	800.41
+    Balance USD	$9.60
+    NGR_total	438.59
+    NGR_total_USD	5.26
     `,
     text: ``,
   },
@@ -307,37 +100,38 @@ export const clientInputs: ClientInput[] = [
     redash_fraudControl_password: ``,
     redash_fraudControl_phone: ``,
     retool_userInfo: `MAIN INFO
-    Client ID	303868
-    User ID	5225782356
-    Login	surajkoli951@gmail.com
-    Registration date(UTC)	11:24 06/06/23
-    Promocode	null
+    Client ID	325334
+    User ID	1544018250
+    Login	ra5933710@gmail.com
+    Registration date(UTC)	12:59 05/07/23
+    Promocode	
     Country	IN
     Status	Active
     Social Login	✔
     IsTest	✘
     Is Trusted	✘
-    Verification status	Done
-    Auto withdrawal score	0.0
-    Auto withdrawal factors	name_mismatch
-    Client suspend score	0.0
-    Pay to affiliate score	0.0
-    Pay to affiliate factors	
-    Loyalty Level	Risk-taker
-    Segment Group	Challenger
+    Verification status	Available
+    Auto withdrawal score	null
+    Auto withdrawal factors	null
+    Client suspend score	null
+    Client suspend factors	null
+    Pay to affiliate score	null
+    Pay to affiliate factors	null
+    Loyalty Level	Novice
+    Segment Group	New
     MTSProfile	
-    User 303868 MTS Profile
+    User 325334 MTS Profile
     CasinoLoyaltyProfile	
-    User 537926977
-    Firstname	Suraj Balaji Koli
+    User 544351917
+    Firstname	null
     Lastname	null
-    Birthdate	29/04/01
-    Contact phone	918669107398
-    Phone Verified	✔
-    Contact email	surajkoli951@gmail.com
+    Birthdate	null
+    Contact phone	null
+    Phone Verified	✘
+    Contact email	ra5933710@gmail.com
     Email Verified	✔
     Sumsub Profile	
-    User 647f37f74176425c78787867
+    User
     STATISTICS
     Currency	INR
     Total stakes (sports)	0 INR
@@ -350,29 +144,126 @@ export const clientInputs: ClientInput[] = [
     Sportsbook GGR USD	
     $0
     Casino GGR	
-    -183.45 INR
+    0 INR
     Casino GGR USD	
-    $-2.2
-    Deposits	15500 INR
-    Deposits USD	$186.00
-    No. of deposits	31
-    Withdrawals	15683 INR
-    Withdrawals USD	$188.20
-    No. of withdrawals	14
+    $0
+    Deposits	0 INR
+    Deposits USD	$0.00
+    No. of deposits	0
+    Withdrawals	0 INR
+    Withdrawals USD	$0.00
+    No. of withdrawals	0
     Fin Pnl	
-    -183 INR
+    0 INR
     Fin Pnl USD	
-    $-2.2
+    $0
     Bookmaker fee	0
-    NGR Total	-223.45 INR
-    NGR Total USD	-$2.68
+    NGR Total	-40 INR
+    NGR Total USD	-$0.48
     Main balance	
     Currency	INR
-    Balance	0.45
-    Balance USD	$0.01
-    NGR_total	-223.45
-    NGR_total_USD	-2.68
+    Balance	0
+    Balance USD	$0.00
+    NGR_total	-40.00
+    NGR_total_USD	-0.48
     `,
     text: ``,
   },
+  {
+    redash_fraudControl: ``,
+    redash_fraudControl_account: ``,
+    redash_fraudControl_device: `337101
+    0afa873c-a1bf-4c4d-8430-12ab6a20d8bf`,
+    redash_fraudControl_email: ``,
+    redash_fraudControl_name: ``,
+    redash_fraudControl_password: `337101
+    bdb8e50b59f2ec4333501c43c5a99a03f707eac2442fb400f3f4a06d2c70f28b20ac659442a112703953db1db2b644e88e7bbbf18c536d013937e6803df2d66b
+    payment_form
+    337101
+    bdb8e50b59f2ec4333501c43c5a99a03f707eac2442fb400f3f4a06d2c70f28b20ac659442a112703953db1db2b644e88e7bbbf18c536d013937e6803df2d66b
+    kyc`,
+    redash_fraudControl_phone: `337101
+    919365207877
+    payment_form`,
+    retool_userInfo: `MAIN INFO
+    Client ID	342371
+    User ID	7240999396
+    Login	919365207877
+    Registration date(UTC)	06:45 20/07/23
+    Promocode	null
+    Country	IN
+    Status	Blocked
+    Social Login	✘
+    IsTest	✘
+    Is Trusted	✘
+    Verification status	Available
+    Auto withdrawal score	1.7
+    Auto withdrawal factors	regular_clients_same_phone, regular_clients_same_device, regular_clients_same_password, client_kyc_status
+    Client suspend score	0.5
+    Client suspend factors	regular_clients_same_device
+    Pay to affiliate score	1.0
+    Pay to affiliate factors	no_pay
+    Loyalty Level	Novice
+    Segment Group	New
+    MTSProfile	
+    User 342371 MTS Profile
+    CasinoLoyaltyProfile	
+    User 548036197
+    Firstname	null
+    Lastname	null
+    Birthdate	null
+    Contact phone	919365207877
+    Phone Verified	✔
+    Contact email	null
+    Email Verified	✘
+    Sumsub Profile	
+    User
+    STATISTICS
+    Currency	INR
+    Total stakes (sports)	0 INR
+    Total stakes USD (sports)	$0.00
+    No. of bets (sports)	0
+    Unsettled sports stakes	0 INR
+    Unsettled sports stakes USD	$0.00
+    Sportsbook GGR	
+    0 INR
+    Sportsbook GGR USD	
+    $0
+    Casino GGR	
+    0 INR
+    Casino GGR USD	
+    $0
+    Deposits	0 INR
+    Deposits USD	$0.00
+    No. of deposits	0
+    Withdrawals	0 INR
+    Withdrawals USD	$0.00
+    No. of withdrawals	0
+    Fin Pnl	
+    0 INR
+    Fin Pnl USD	
+    $0
+    Bookmaker fee	0
+    NGR Total	0 INR
+    NGR Total USD	$0.00
+    Main balance	
+    Currency	INR
+    Balance	0
+    Balance USD	$0.00
+    NGR_total	0.00
+    NGR_total_USD	0.00
+    block_suspend_reasons:General:Customer_Request`,
+    text: ``,
+  },
+  // {
+  //   redash_fraudControl: ``,
+  //   redash_fraudControl_account: ``,
+  //   redash_fraudControl_device: ``,
+  //   redash_fraudControl_email: ``,
+  //   redash_fraudControl_name: ``,
+  //   redash_fraudControl_password: ``,
+  //   redash_fraudControl_phone: ``,
+  //   retool_userInfo: ``,
+  //   text: ``,
+  // },
 ];

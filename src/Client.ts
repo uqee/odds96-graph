@@ -83,7 +83,7 @@ export class Client extends Node {
   private get balance(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Balance USD\s*-?\$([^\s]+)\n/g,
+        /\s*Balance USD\s*-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -192,7 +192,7 @@ export class Client extends Node {
   private get deposits(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Deposits USD\s*-?\$([^\s]+)\n/g,
+        /\s*Deposits USD\s*-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -200,7 +200,7 @@ export class Client extends Node {
 
   private get email(): string | undefined {
     return Client.match(
-      /\s*Contact email\s*([^\s]+)\n/g,
+      /\s*Contact email\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -210,7 +210,7 @@ export class Client extends Node {
       this.input.id ??
       toDefined(
         Client.match(
-          /\s*Client ID\s*([^\s]+)\n/g,
+          /\s*Client ID\s*([^\s]+)/g,
           this.input.retool_userInfo
         )?.[0]?.[1]
       )
@@ -253,7 +253,7 @@ export class Client extends Node {
 
   private get login(): string | undefined {
     return Client.match(
-      /\s*Login\s*([^\s]+)\n/g,
+      /\s*Login\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -279,7 +279,7 @@ export class Client extends Node {
   private get ngr(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*NGR Total USD\s*-?\$([^\s]+)\n/g,
+        /\s*NGR Total USD\s*-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -287,28 +287,28 @@ export class Client extends Node {
 
   private get phone(): string | undefined {
     return Client.match(
-      /\s*Contact phone\s*([^\s]+)\n/g,
+      /\s*Contact phone\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get reg(): string | undefined {
     return Client.match(
-      /\s*Registration date\(UTC\)\s*([^\s]{5} [^\s]{8})\n/g,
+      /\s*Registration date\(UTC\)\s*([^\s]{5} [^\s]{8})/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get status(): string | undefined {
     return Client.match(
-      /\s*Status\s*([^\n]+)\s/g,
+      /\s*Status\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get tags(): string[] | undefined {
     const tags: string[] | undefined = Client.match(
-      /\s*block_suspend_reasons:([^\s]+)\n/g,
+      /\s*block_suspend_reasons:([^\s]+)/g,
       this.input.retool_userInfo
     )?.map((match) => match[1]);
     return tags?.length !== 0 ? tags : undefined;
@@ -320,7 +320,7 @@ export class Client extends Node {
 
   private get verif(): string | undefined {
     return Client.match(
-      /\s*Verification status\s*([^\s]+)\n/g,
+      /\s*Verification status\s*([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -328,7 +328,7 @@ export class Client extends Node {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Withdrawals USD\s*-?\$([^\s]+)\n/g,
+        /\s*Withdrawals USD\s*-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
