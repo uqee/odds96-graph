@@ -83,7 +83,7 @@ export class Client extends Node {
   private get balance(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Balance USD\s*-?\$([^\s]+)/g,
+        /\s*Balance USD\t-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -192,7 +192,7 @@ export class Client extends Node {
   private get deposits(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Deposits USD\s*-?\$([^\s]+)/g,
+        /\s*Deposits USD\t-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -200,7 +200,7 @@ export class Client extends Node {
 
   private get email(): string | undefined {
     return Client.match(
-      /\s*Contact email\s*([^\s]+)/g,
+      /\s*Contact email\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -210,7 +210,7 @@ export class Client extends Node {
       this.input.id ??
       toDefined(
         Client.match(
-          /\s*Client ID\s*([^\s]+)/g,
+          /\s*Client ID\t([^\s]+)/g,
           this.input.retool_userInfo
         )?.[0]?.[1]
       )
@@ -253,19 +253,19 @@ export class Client extends Node {
 
   private get login(): string | undefined {
     return Client.match(
-      /\s*Login\s*([^\s]+)/g,
+      /\s*Login\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get name(): string | undefined {
     const firstname: string | undefined = Client.match(
-      /\s*Firstname\s*([^\s]+)/g,
+      /\s*Firstname\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
 
     const lastname: string | undefined = Client.match(
-      /\s*Lastname\s*([^\s]+)/g,
+      /\s*Lastname\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
 
@@ -279,7 +279,7 @@ export class Client extends Node {
   private get ngr(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*NGR Total USD\s*-?\$([^\s]+)/g,
+        /\s*NGR Total USD\t-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
@@ -287,21 +287,21 @@ export class Client extends Node {
 
   private get phone(): string | undefined {
     return Client.match(
-      /\s*Contact phone\s*([^\s]+)/g,
+      /\s*Contact phone\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get reg(): string | undefined {
     return Client.match(
-      /\s*Registration date\(UTC\)\s*([^\s]{5} [^\s]{8})/g,
+      /\s*Registration date\(UTC\)\t([^\s]{5} [^\s]{8})/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
 
   private get status(): string | undefined {
     return Client.match(
-      /\s*Status\s*([^\s]+)/g,
+      /\s*Status\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -320,7 +320,7 @@ export class Client extends Node {
 
   private get verif(): string | undefined {
     return Client.match(
-      /\s*Verification status\s*([^\s]+)/g,
+      /\s*Verification status\t([^\s]+)/g,
       this.input.retool_userInfo
     )?.[0]?.[1];
   }
@@ -328,7 +328,7 @@ export class Client extends Node {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Withdrawals USD\s*-?\$([^\s]+)/g,
+        /\s*Withdrawals USD\t-?\$([^\s]+)/g,
         this.input.retool_userInfo
       )?.[0]?.[1]?.replace(',', '')
     );
