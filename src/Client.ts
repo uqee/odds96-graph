@@ -83,9 +83,9 @@ export class Client extends Node {
   private get balance(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Balance USD\t-?\$([^\s]+)/g,
+        /\s*Balance USD\t(-?\$[^\s]+)/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]?.replace(',', '')
+      )?.[0]?.[1]
     );
   }
 
@@ -130,7 +130,9 @@ export class Client extends Node {
 
         body += `\n${Client.pad('$')}`;
         body += ` | ${balance}`;
-        body += ` = ↑${deposits} ↓${withdrawals} ${ngr > 0 ? '-' : '+'}${ngr}`;
+        body += ` = ↑${deposits} ↓${withdrawals} ${
+          ngr > 0 ? `-${ngr}` : `+${-ngr}`
+        }`;
       }
 
       if (isDefined(email)) {
@@ -192,9 +194,9 @@ export class Client extends Node {
   private get deposits(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Deposits USD\t-?\$([^\s]+)/g,
+        /\s*Deposits USD\t(-?\$[^\s]+)/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]?.replace(',', '')
+      )?.[0]?.[1]
     );
   }
 
@@ -279,9 +281,9 @@ export class Client extends Node {
   private get ngr(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*NGR Total USD\t-?\$([^\s]+)/g,
+        /\s*NGR Total USD\t(-?\$[^\s]+)/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]?.replace(',', '')
+      )?.[0]?.[1]
     );
   }
 
@@ -328,9 +330,9 @@ export class Client extends Node {
   private get withdrawals(): number | undefined {
     return toNumber(
       Client.match(
-        /\s*Withdrawals USD\t-?\$([^\s]+)/g,
+        /\s*Withdrawals USD\t(-?\$[^\s]+)/g,
         this.input.retool_userInfo
-      )?.[0]?.[1]?.replace(',', '')
+      )?.[0]?.[1]
     );
   }
 }
